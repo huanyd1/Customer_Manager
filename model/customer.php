@@ -82,7 +82,7 @@
         }
 
         public function update(){
-            $query = "UPDATE department SET id_department=:id_department, department_name=:department_name, department_status=:department_status WHERE id_department=:id_department ";
+            $query = "UPDATE customer SET id_customer=:id_customer, customer_name=:customer_name, customer_img=:customer_img, customer_address=:customer_address, total_order_value=:total_order_value, contact=:contact, phone_number=:phone_number, customer_email=:customer_email, status=:status WHERE id_department=:id_department ";
             $stmt = $this->conn->prepare($query);
             //clean data
             $this->id_customer = htmlspecialchars(strip_tags($this->id_customer));
@@ -103,7 +103,7 @@
             $stmt->bindParam(':contact', $this->contact);
             $stmt->bindParam(':phone_number', $this->phone_number);
             $stmt->bindParam(':customer_email', $this->customer_email);
-            $stmt->bindParam(':id_department', $this->id_department);
+            $stmt->bindParam(':status', $this->status);
 
             if($stmt->execute()){
                 return true;

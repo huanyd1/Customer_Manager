@@ -13,7 +13,7 @@
     #call funcion
     $connect = $db->connect();
 
-    $customer = new Indebt($connect);
+    $indebt = new Indebt($connect);
 
     $data = json_decode(file_get_contents("php://input"));
     $indebt->id_debt = $data->id_debt;
@@ -25,7 +25,7 @@
     $indebt->status = $data->status;
   
 
-    if($customer->create()){
+    if($indebt->create()){
         echo json_encode(array('message','Indebt Created'));
     }
     else{
