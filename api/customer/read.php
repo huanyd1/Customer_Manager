@@ -11,7 +11,7 @@
     #call funcion
     $connect = $db->connect();
 
-    $department = new Customer($connect);
+    $customer = new Customer($connect);
     $read = $customer->read();
 
     #Đếm số cột

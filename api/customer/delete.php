@@ -13,7 +13,7 @@
     #call funcion
     $connect = $db->connect();
 
-    $department = new Customer($connect);
+    $customer = new Customer($connect);
     
     $data = json_decode(file_get_contents("php://input"));
 

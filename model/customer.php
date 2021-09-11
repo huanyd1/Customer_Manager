@@ -82,7 +82,7 @@
         }
 
         public function update(){
-            $query = "UPDATE customer SET id_customer=:id_customer, customer_name=:customer_name, customer_img=:customer_img, customer_address=:customer_address, total_order_value=:total_order_value, contact=:contact, phone_number=:phone_number, customer_email=:customer_email, status=:status WHERE id_department=:id_department ";
+            $query = "UPDATE customer SET id_customer=:id_customer, customer_name=:customer_name, customer_img=:customer_img, customer_address=:customer_address, total_order_value=:total_order_value, contact=:contact, phone_number=:phone_number, customer_email=:customer_email, status=:status WHERE id_customer=:id_customer ";
             $stmt = $this->conn->prepare($query);
             //clean data
             $this->id_customer = htmlspecialchars(strip_tags($this->id_customer));
