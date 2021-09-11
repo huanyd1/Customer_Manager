@@ -51,7 +51,7 @@
         }
 
         public function create(){
-            $query = "INSERT INTO customer SET id_customer=:id_customer, customer_name=:customer_name, customer_img=:customer_img, customer_address=:customer_address, total_order_value=:total_order_value, contac=:contac, phone_number=:phone_number, customer_email=:customer_email, status=:status ";
+            $query = "INSERT INTO customer SET id_customer=:id_customer, customer_name=:customer_name, customer_img=:customer_img, customer_address=:customer_address, total_order_value=:total_order_value, contact=:contact, phone_number=:phone_number, customer_email=:customer_email, status=:status ";
             $stmt = $this->conn->prepare($query);
             //clean data
             $this->id_customer = htmlspecialchars(strip_tags($this->id_customer));
@@ -71,7 +71,7 @@
             $stmt->bindParam(':total_order_value', $this->total_order_value);
             $stmt->bindParam(':contact', $this->contact);
             $stmt->bindParam(':phone_number', $this->phone_number);
-            $stmt->bindParam(':customer_email', $this->ccustomer_email);
+            $stmt->bindParam(':customer_email', $this->customer_email);
             $stmt->bindParam(':status', $this->status);
 
             if($stmt->execute()){
