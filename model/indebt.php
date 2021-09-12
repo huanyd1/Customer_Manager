@@ -7,7 +7,7 @@
         public $id_customer;
         public $phone_number;
         public $total_money;
-        public $contact;
+        public $contract;
         public $note;
         public $status;
 
@@ -40,21 +40,21 @@
             $this->id_customer = $row['id_customer'];
             $this->phone_number = $row['phone_number'];
             $this->total_money = $row['total_money'];
-            $this->contact = $row['contact'];
+            $this->contract = $row['contract'];
             $this->note = $row['note'];
             $this->status = $row['status'];
             return $stmt;
         }
 
         public function create(){
-            $query = "INSERT INTO indebt SET id_debt=:id_debt, id_customer=:id_customer, phone_number=:phone_number, total_money=:total_money, contact=:contact, note=:note, status=:status";
+            $query = "INSERT INTO indebt SET id_debt=:id_debt, id_customer=:id_customer, phone_number=:phone_number, total_money=:total_money, contract=:contract, note=:note, status=:status";
             $stmt = $this->conn->prepare($query);
             //clean data
             $this->id_debt = htmlspecialchars(strip_tags($this->id_debt));
             $this->id_customer = htmlspecialchars(strip_tags($this->id_customer));
             $this->phone_number = htmlspecialchars(strip_tags($this->phone_number));
             $this->total_money = htmlspecialchars(strip_tags($this->total_money));
-            $this->contact = htmlspecialchars(strip_tags($this->contact));
+            $this->contract = htmlspecialchars(strip_tags($this->contract));
             $this->note = htmlspecialchars(strip_tags($this->note));
             $this->status = htmlspecialchars(strip_tags($this->status));            
 
@@ -62,7 +62,7 @@
             $stmt->bindParam(':id_customer', $this->id_customer);
             $stmt->bindParam(':phone_number', $this->phone_number);
             $stmt->bindParam(':total_money', $this->total_money);
-            $stmt->bindParam(':contact', $this->contact);
+            $stmt->bindParam(':contract', $this->contract);
             $stmt->bindParam(':note', $this->note);
             $stmt->bindParam(':status', $this->status);
 
@@ -74,14 +74,14 @@
         }
 
         public function update(){
-            $query = "UPDATE indebt SET id_debt=:id_debt, id_customer=:id_customer, phone_number=:phone_number, total_money=:total_money, contact=:contact, note=:note, status=:status WHERE id_debt=:id_debt ";
+            $query = "UPDATE indebt SET id_debt=:id_debt, id_customer=:id_customer, phone_number=:phone_number, total_money=:total_money, contract=:contract, note=:note, status=:status WHERE id_debt=:id_debt ";
             $stmt = $this->conn->prepare($query);
             //clean data
             $this->id_debt = htmlspecialchars(strip_tags($this->id_debt));
             $this->id_customer = htmlspecialchars(strip_tags($this->id_customer));
             $this->phone_number = htmlspecialchars(strip_tags($this->phone_number));
             $this->total_money = htmlspecialchars(strip_tags($this->total_money));
-            $this->contact = htmlspecialchars(strip_tags($this->contact));
+            $this->contract = htmlspecialchars(strip_tags($this->contract));
             $this->note = htmlspecialchars(strip_tags($this->note));            
             $this->status = htmlspecialchars(strip_tags($this->status));            
 
@@ -89,7 +89,7 @@
             $stmt->bindParam(':id_customer', $this->id_customer);
             $stmt->bindParam(':phone_number', $this->phone_number);
             $stmt->bindParam(':total_money', $this->total_money);
-            $stmt->bindParam(':contact', $this->contact);
+            $stmt->bindParam(':contract', $this->contract);
             $stmt->bindParam(':note', $this->note);
             $stmt->bindParam(':status', $this->status);
 

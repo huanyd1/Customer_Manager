@@ -18,25 +18,25 @@
     $num = $read->rowCount();
 
     if($num > 0){
-        $question_array = [];
-        $question_array['indebt'] = [];
+        $indebt_array = [];
+        $indebt_array['indebt'] = [];
 
         while($row = $read->fetch(PDO::FETCH_ASSOC)){
             extract($row);
 
-            $question_item = array(
+            $indebt_item = array(
                 'id_debt' => $id_debt,
                 'id_customer' => $id_customer,
                 'phone_number' => $phone_number,
                 'total_money' => $total_money,
-                'contact' => $contact,
+                'contract' => $contract,
                 'note' => $note,
                 'status' => $status
             );
             #Đẩy mảng
-            array_push($question_array['indebt'], $question_item);
+            array_push($indebt_array['indebt'], $indebt_item);
         }
         #Giải mã
-        echo json_encode($question_array);
+        echo json_encode($indebt_array);
     }
 ?>

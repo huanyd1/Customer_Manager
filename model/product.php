@@ -41,7 +41,7 @@
             $this->product_img = $row['product_img'];
             $this->product_group = $row['product_group'];
             $this->product_value = $row['product_value'];
-            $this->id_product = $row['product_total'];
+            $this->product_total = $row['product_total'];
             $this->product_sold = $row['product_sold'];
             $this->product_inventory = $row['product_inventory'];
             $this->status = $row['status'];
@@ -78,7 +78,7 @@
         }
 
         public function update(){
-            $query = "UPDATE product SET id_product=:id_product, product_img=:product_img, product_group=:product_group, product_value=:product_value, product_total=:product_total, product_sold=:product_sold, product_inventory=:product_inventory, status=:status WHERE id_department=:id_department ";
+            $query = "UPDATE product SET id_product=:id_product, product_img=:product_img, product_group=:product_group, product_value=:product_value, product_total=:product_total, product_sold=:product_sold, product_inventory=:product_inventory, status=:status WHERE id_product=:id_product ";
             $stmt = $this->conn->prepare($query);
             //clean data
             $this->id_product = htmlspecialchars(strip_tags($this->id_product));

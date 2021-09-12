@@ -18,13 +18,13 @@
     $num = $read->rowCount();
 
     if($num > 0){
-        $question_array = [];
-        $question_array['order'] = [];
+        $order_array = [];
+        $order_array['order'] = [];
 
         while($row = $read->fetch(PDO::FETCH_ASSOC)){
             extract($row);
 
-            $question_item = array(
+            $order_item = array(
                 'id_order' => $id_order,
                 'number_order' => $number_order,
                 'date_order' => $date_order,
@@ -35,9 +35,9 @@
                 'status' => $status
             );
             #Đẩy mảng
-            array_push($question_array['order'], $question_item);
+            array_push($order_array['order'], $order_item);
         }
         #Giải mã
-        echo json_encode($question_array);
+        echo json_encode($order_array);
     }
 ?>

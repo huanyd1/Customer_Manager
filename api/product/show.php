@@ -13,11 +13,11 @@
 
     $product = new Product($connect);
 
-    $product->product = isset($_GET['id']) ? $_GET['id'] : die();
+    $product->id_product = isset($_GET['id']) ? $_GET['id'] : die();
 
     $product->show();
 
-    $product = array(
+    $product_item = array(
         'id_product' => $product->id_product,
         'product_img' => $product->product_img,
         'product_group' => $product->product_group,

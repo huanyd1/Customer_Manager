@@ -31,7 +31,7 @@
                 'status' => $status,
                 'id_department' => $id_department,
                 'card_number' => $card_number,
-                'birdth_day' => $birdth_day,
+                'birth_day' => $birth_day,
                 'staff_address' => $staff_address
             );
             #Đẩy mảng

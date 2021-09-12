@@ -18,13 +18,13 @@
     $num = $read->rowCount();
 
     if($num > 0){
-        $question_array = [];
-        $question_array['customer'] = [];
+        $customer_array = [];
+        $customer_array['customer'] = [];
 
         while($row = $read->fetch(PDO::FETCH_ASSOC)){
             extract($row);
 
-            $question_item = array(
+            $customer_item = array(
                 'id_customer' => $id_customer,
                 'customer_name' => $customer_name,
                 'customer_img' => $customer_img,
@@ -36,9 +36,9 @@
                 'status' => $status
             );
             #Đẩy mảng
-            array_push($question_array['customer'], $question_item);
+            array_push($customer_array['customer'], $customer_item);
         }
         #Giải mã
-        echo json_encode($question_array);
+        echo json_encode($customer_array);
     }
 ?>

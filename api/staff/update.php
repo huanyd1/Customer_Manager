@@ -22,7 +22,7 @@
     $staff->status = $data->status;
     $staff->id_department = $data->id_department;
     $staff->card_number = $data->card_number;
-    $staff->birdth_day = $data->birdth_day;
+    $staff->birth_day = $data->birth_day;
     $staff->staff_address = $data->staff_address;
 
     if($staff->update()){

@@ -20,7 +20,7 @@
     $indebt->id_customer = $data->id_customer;
     $indebt->phone_number = $data->phone_number;
     $indebt->total_money = $data->total_money;
-    $indebt->contact = $data->contact;
+    $indebt->contract = $data->contract;
     $indebt->note = $data->note;
     $indebt->status = $data->status;
   

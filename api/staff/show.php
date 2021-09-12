@@ -13,18 +13,18 @@
 
     $staff = new Staff($connect);
 
-    $staff->staff = isset($_GET['id']) ? $_GET['id'] : die();
+    $staff->id_staff = isset($_GET['id']) ? $_GET['id'] : die();
 
     $staff->show();
 
-    $staff = array(
+    $staff_item = array(
         'id_staff' => $staff->id_staff,
         'staff_name' => $staff->staff_name,
         'phone_number' => $staff->phone_number,
         'status' => $staff->status,
         'id_department' => $staff->id_department,
         'card_number' => $staff->card_number,
-        'birdth_day' => $staff->birdth_day,
+        'birdth_day' => $staff->birth_day,
         'staff_address' => $staff->staff_address
     );
     print_r(json_encode($staff_item));

@@ -22,7 +22,7 @@
         'id_customer' => $indebt->id_customer,
         'phone_number' => $indebt->phone_number,
         'total_money' => $indebt->total_money,
-        'contact' => $indebt->contact,
+        'contract' => $indebt->contract,
         'note' => $indebt->note,
         'status' => $indebt->status
     );

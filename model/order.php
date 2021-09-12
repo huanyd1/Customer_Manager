@@ -20,7 +20,7 @@
 
         public function read(){
             #Sắp xếp câu hỏi giảm dần
-            $query = "SELECT * FROM order ORDER BY id_order ASC";
+            $query = "SELECT * FROM `order` ORDER BY id_order ASC";
             #statement
             $stmt = $this->conn->prepare($query);
             #Thực hiện
@@ -29,7 +29,7 @@
         }
 
         public function show(){
-            $query = "SELECT * FROM order WHERE id_order=? LIMIT 1";
+            $query = "SELECT * FROM `order` WHERE id_order=? LIMIT 1";
             #statement
             $stmt = $this->conn->prepare($query);
             #Kết hợp tham số
@@ -49,7 +49,7 @@
         }
 
         public function create(){
-            $query = "INSERT INTO order SET id_order=:id_order, number_order=:number_order, date_order=:date_order, id_customer=:id_customer, id_product=:id_product, order_value=:order_value, id_staff=:id_staff, status=:status ";
+            $query = "INSERT INTO `order` SET id_order=:id_order, number_order=:number_order, date_order=:date_order, id_customer=:id_customer, id_product=:id_product, order_value=:order_value, id_staff=:id_staff, status=:status ";
             $stmt = $this->conn->prepare($query);
             //clean data
             $this->id_order = htmlspecialchars(strip_tags($this->id_order));
@@ -78,7 +78,7 @@
         }
 
         public function update(){
-            $query = "UPDATE order SET id_order=:id_order, number_order=:number_order, date_order=:date_order, id_customer=:id_customer, id_product=:id_product, order_value=:order_value, id_staff=:id_staff, status=:status WHERE id_department=:id_department ";
+            $query = "UPDATE `order` SET id_order=:id_order, number_order=:number_order, date_order=:date_order, id_customer=:id_customer, id_product=:id_product, order_value=:order_value, id_staff=:id_staff, status=:status WHERE id_order=:id_order ";
             $stmt = $this->conn->prepare($query);
             //clean data
             $this->id_order = htmlspecialchars(strip_tags($this->id_order));
@@ -107,7 +107,7 @@
         }
 
         public function delete(){
-            $query = "DELETE FROM order WHERE id_order=:id_order ";
+            $query = "DELETE FROM `order` WHERE id_order=:id_order ";
             $stmt = $this->conn->prepare($query);
             //clean data
             $this->id_order = htmlspecialchars(strip_tags($this->id_order));

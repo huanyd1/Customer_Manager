@@ -9,7 +9,7 @@
         public $status;
         public $id_department;
         public $card_number;
-        public $birdth_day;
+        public $birth_day;
         public $staff_address;
 
         #connect database
@@ -43,13 +43,13 @@
             $this->status = $row['status'];
             $this->id_staff = $row['id_department'];
             $this->card_number = $row['card_number'];
-            $this->birdth_day = $row['birdth_day'];
+            $this->birth_day = $row['birth_day'];
             $this->staff_address = $row['staff_address'];
             return $stmt;
         }
 
         public function create(){
-            $query = "INSERT INTO staff SET id_staff=:id_staff, staff_name=:staff_name, phone_number=:phone_number, status=:status, id_department=:id_department, card_number=:card_number, birdth_day=:birdth_day, staff_address=:staff_address ";
+            $query = "INSERT INTO staff SET id_staff=:id_staff, staff_name=:staff_name, phone_number=:phone_number, status=:status, id_department=:id_department, card_number=:card_number, birth_day=:birth_day, staff_address=:staff_address ";
             $stmt = $this->conn->prepare($query);
             //clean data
             $this->id_staff = htmlspecialchars(strip_tags($this->id_staff));
@@ -58,7 +58,7 @@
             $this->status = htmlspecialchars(strip_tags($this->status));
             $this->id_department = htmlspecialchars(strip_tags($this->id_department));
             $this->card_number = htmlspecialchars(strip_tags($this->card_number));
-            $this->birdth_day = htmlspecialchars(strip_tags($this->birdth_day));
+            $this->birth_day = htmlspecialchars(strip_tags($this->birth_day));
             $this->staff_address = htmlspecialchars(strip_tags($this->staff_address));            
 
             $stmt->bindParam(':id_staff', $this->id_staff);
@@ -67,7 +67,7 @@
             $stmt->bindParam(':status', $this->status);
             $stmt->bindParam(':id_department', $this->id_department);
             $stmt->bindParam(':card_number', $this->card_number);
-            $stmt->bindParam(':birdth_day', $this->birdth_day);
+            $stmt->bindParam(':birth_day', $this->birth_day);
             $stmt->bindParam(':staff_address', $this->staff_address);
 
             if($stmt->execute()){
@@ -78,7 +78,7 @@
         }
 
         public function update(){
-            $query = "UPDATE staff SET id_staff=:id_staff, staff_name=:staff_name, phone_number=:phone_number, status=:status, id_department=:id_department, card_number=:card_number, birdth_day=:birdth_day, staff_address=:staff_address WHERE id_department=:id_department ";
+            $query = "UPDATE staff SET id_staff=:id_staff, staff_name=:staff_name, phone_number=:phone_number, status=:status, id_department=:id_department, card_number=:card_number, birth_day=:birth_day, staff_address=:staff_address WHERE id_staff=:id_staff ";
             $stmt = $this->conn->prepare($query);
             //clean data
             $this->id_staff = htmlspecialchars(strip_tags($this->id_staff));
@@ -87,7 +87,7 @@
             $this->status = htmlspecialchars(strip_tags($this->status));
             $this->id_department = htmlspecialchars(strip_tags($this->id_department));
             $this->card_number = htmlspecialchars(strip_tags($this->card_number));
-            $this->birdth_day = htmlspecialchars(strip_tags($this->birdth_day));
+            $this->birth_day = htmlspecialchars(strip_tags($this->birth_day));
             $this->staff_address = htmlspecialchars(strip_tags($this->staff_address));            
 
             $stmt->bindParam(':id_staff', $this->id_staff);
@@ -96,7 +96,7 @@
             $stmt->bindParam(':status', $this->status);
             $stmt->bindParam(':id_department', $this->id_department);
             $stmt->bindParam(':card_number', $this->card_number);
-            $stmt->bindParam(':birdth_day', $this->birdth_day);
+            $stmt->bindParam(':birth_day', $this->birth_day);
             $stmt->bindParam(':staff_address', $this->staff_address);
 
             if($stmt->execute()){
