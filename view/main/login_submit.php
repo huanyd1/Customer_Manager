@@ -21,13 +21,16 @@ include("../../config/login_db.php");
             } 
             else {
                 $msg = "Invalid username and password!";
+                header('location:login.php');
             }
         }
         catch (PDOException $e){
             echo "Error : ".$e->getMessage();
+            header('location:login.php');
         }
     }
     else{
         $msg = "Both fields are required!";
+        header('location:login.php');
     }
 ?>

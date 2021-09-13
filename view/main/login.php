@@ -111,19 +111,8 @@
                 <label>Password</label>
             </div>
             <input class="submit" id="submit" type="submit" value="Đăng nhập">
-
-            <a href="">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                Submit
-            </a>
         </form>
     </div>
-
-
-
   </section>
   <script>
   let sidebar = document.querySelector(".sidebar");
