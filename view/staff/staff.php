@@ -38,7 +38,7 @@
          <span class="tooltip">Search</span>
       </li>
       <li>
-        <a href="#">
+        <a href="../../index.php">
           <i class='bx bx-grid-alt'></i>
           <span class="links_name">Dashboard</span>
         </a>
@@ -185,10 +185,10 @@
                                 <input type="checkbox" name="all_checkbox" id="all_checkbox">
                             </div>
                             <div class="name-nv title-staff">
-                                <p>Mã khách hàng</p>
+                                <p>Mã nhân viên</p>
                             </div>
                             <div class="code title-staff">
-                                <p>Tên khách hàng</p>
+                                <p>Tên nhân viên</p>
                             </div>
                             <div class="phone title-staff">
                                 <p>Số điện thoại</p>
