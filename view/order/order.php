@@ -5,7 +5,7 @@
     }
     require_once '../../config/login_db.php';
     try {  
-        $sql = 'SELECT * FROM staff ORDER BY id_staff ASC';
+        $sql = 'SELECT * FROM `order` ORDER BY id_order ASC';
     
         $q = $db->query($sql);
         $q->setFetchMode(PDO::FETCH_ASSOC);
@@ -114,14 +114,14 @@
         CÔNG TY TRUYỀN THÔNG VÀ ĐÀO TẠO PLANTINUM CLOUD</p>
       </div>
     </div>
-    <!-- <div class="container">
+    <div class="container">
         <div class="home">
             <div class="staff">
                 <div class="top-staff">
-                    <h1>NHÂN VIÊN</h1>
+                    <h1>ĐƠN HÀNG</h1>
                     <div class="top-btn-staff">
                         <div class="not-published inline" id="published">
-                            <a class="a-not-published a-btn" href="add_staff.php">
+                            <a class="a-not-published a-btn" href="add_order.php">
                                 <img src="../../img/add.png" alt="pls">
                                 <span class="span-text">Thêm mới</span>
                             </a>
@@ -150,7 +150,7 @@
                                 <span class="span-text">Excel</span>
                             </a>
                             <form class="form-horizontal" name="show_list_user">
-                                <input type="hidden" id="link_export" value="https://khachhang.bachkim.com.vn/index.php?module=debt&amp;view=home&amp;task=export_video&amp;raw=1">
+                                <input type="hidden" id="link_export" value="">
                             </form>
                         </div>
                         <div class="not-published inline">
@@ -185,28 +185,28 @@
                                 <input type="checkbox" name="all_checkbox" id="all_checkbox">
                             </div>
                             <div class="name-nv title-staff">
-                                <p>Mã nhân viên</p>
+                                <p>Mã đơn hàng</p>
                             </div>
                             <div class="code title-staff">
-                                <p>Tên nhân viên</p>
+                                <p>Số đơn hàng</p>
                             </div>
                             <div class="phone title-staff">
-                                <p>Số điện thoại</p>
+                                <p>Ngày đặt hàng</p>
                             </div>
-                            <div class="password title-staff">
-                                <p>Trạng thái</p>
+                            <div class="order-customer title-staff">
+                                <p>Khách hàng</p>
                             </div>
                             <div class="phongban title-staff">
-                                <p>Phòng ban</p>
+                                <p>Sản phẩm</p>
                             </div>
                             <div class="cmt title-staff">
-                                <p>Số CMT</p>
+                                <p>Giá trị đơn</p>
                             </div>
                             <div class="note title-staff">
-                                <p>Địa chỉ</p>
+                                <p>Nhân viên phụ trách</p>
                             </div>
                             <div class="birtday title-staff">
-                                <p>Ngày sinh</p>
+                                <p>Trạng thái</p>
                             </div>
                            
                         </div>
@@ -221,13 +221,25 @@
                             </div>
                            
                             <div class="name-nv-list title-staff-list">
-                                <p><a href=""><?php echo htmlspecialchars($row['id_staff']); ?></a></p>
+                                <p><a href=""><?php echo htmlspecialchars($row['id_order']); ?></a></p>
                             </div>
                             <div class="code-list title-staff-list">
-                                <p><?php echo htmlspecialchars($row['staff_name']); ?></p>
+                                <p><?php echo htmlspecialchars($row['number_order']); ?></p>
                             </div>
                             <div class="phone-list title-staff-list">
-                                <p><?php echo htmlspecialchars($row['phone_number']); ?></p>
+                                <p><?php echo htmlspecialchars($row['date_order']); ?></p>
+                            </div>
+                            <div class="phongban-list title-staff-list">
+                                <p><?php echo htmlspecialchars($row['id_customer']); ?></p>
+                            </div>
+                            <div class="cmt-list title-staff-list">
+                                <p><?php echo htmlspecialchars($row['id_product']); ?></p>
+                            </div>
+                            <div class="node-list title-staff-list">
+                                <p><?php echo htmlspecialchars($row['order_value']); ?></p>
+                            </div>
+                            <div class="birtday-list title-staff-list">
+                                <p><?php echo htmlspecialchars($row['id_staff']); ?></p>
                             </div>
                             <div class="password-list title-staff-list">
                                 <?php if($row['status']==1){ ?>
@@ -241,18 +253,6 @@
                                     </a>
                                 <?php } ?>
                             </div>
-                            <div class="phongban-list title-staff-list">
-                                <p><?php echo htmlspecialchars($row['id_department']); ?></p>
-                            </div>
-                            <div class="cmt-list title-staff-list">
-                                <p><?php echo htmlspecialchars($row['card_number']); ?></p>
-                            </div>
-                            <div class="node-list title-staff-list">
-                                <p><?php echo htmlspecialchars($row['staff_address']); ?></p>
-                            </div>
-                            <div class="birtday-list title-staff-list">
-                                <p><?php echo htmlspecialchars($row['birth_day']); ?></p>
-                            </div>
                         </div>
                             <?php endwhile; ?>
                         </tbody>
@@ -261,12 +261,7 @@
             </div>
             </div>
         </div>
-    </div> -->
-    <table>
-      <tbody id="data">
-
-      </tbody>
-    </table>
+    </div>
   </section>
   <script>
     let sidebar = document.querySelector(".sidebar");
@@ -290,36 +285,6 @@
       closeBtn.classList.replace("bx-menu-alt-right","bx-menu");
     }
     }
-  </script>
-  <script>
-    fetch("http://localhost:8080/customer_manager/api/staff/read.php").then(
-      res=>{
-        res.json().then(
-          data=>{
-            console.log(data);
-            if(data.length > 0){
-              var temp = "";
-              
-              //Start for loop
-                data.forEach((u)=>{
-                  temp += "<tr>";
-                  temp += "<td>"+u.id_staff+"</td>";
-                  temp += "<td>"+u.staff_name+"</td>";
-                  temp += "<td>"+u.phone_number+"</td>";
-                  temp += "<td>"+u.status+"</td>";
-                  temp += "<td>"+u.id_department+"</td>";
-                  temp += "<td>"+u.card_number+"</td>";
-                  temp += "<td>"+u.birth_day+"</td>";
-                  temp += "<td>"+u.staff_address+"</td>";
-                })
-              //Close for loop
-
-                document.getElementById("data").innerHTML = temp;
-            }
-          }
-        )
-      }
-    )
   </script>
 </body>
 </html>

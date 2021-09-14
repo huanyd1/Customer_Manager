@@ -120,7 +120,7 @@ if(trim($_SESSION['sess_user_id']) == '') {
                                 <p class="p-name">Nhân viên</p>
                             </div>
                         </a>
-                        <a class="item" href="#">
+                        <a class="item" href="view/order/order.php">
                             <div class="item-img">
                                 <img class="img" src="img/img-order.png" alt="">
                                 <img class="img_hover" src="img/img-order-active.png" alt="Đơn hàng">
