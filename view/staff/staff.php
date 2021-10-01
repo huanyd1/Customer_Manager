@@ -1,24 +1,10 @@
-<?php 
-    session_start();
-    if(trim($_SESSION['sess_user_id']) == '') {
-    header('location:view/main/login.php');
-    }
-    require_once '../../config/login_db.php';
-    try {  
-        $sql = 'SELECT * FROM staff ORDER BY id_staff ASC';
-    
-        $q = $db->query($sql);
-        $q->setFetchMode(PDO::FETCH_ASSOC);
-    } catch (PDOException $e) {
-        die("Could not connect to the database :" . $e->getMessage());
-    }
-?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../css/index.css">
     <link rel="stylesheet" href="../../css/table.css">
+    <script src="../../js/staff.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"> 
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -114,7 +100,7 @@
         CÔNG TY TRUYỀN THÔNG VÀ ĐÀO TẠO PLANTINUM CLOUD</p>
       </div>
     </div>
-    <!-- <div class="container">
+    <div class="container">
         <div class="home">
             <div class="staff">
                 <div class="top-staff">
@@ -164,9 +150,9 @@
                 <div class="content-staff">
                 <form class="form-loc" action="" name="search_form_filter" id="search_form_filter" method="get" onsubmit="javascript: submitnv();return false;">
                     <select class="select-room" name="reference" id="reference">
-                        <option value="0">Hợp đồng tham chiếu</option>
-                        <option value="46">Bạch Kim nợ</option>
-                        <option value="45">Khách nợ Bạch Kim</option>
+                        <option value="0">Mã Nhân Viên</option>
+                        <option value="46">Tên Nhân Viên</option>
+                        <option value="45">Phòng Ban</option>
                     </select>
                     <div class="search">
                         <input type="text" name="keyword_nv" id="keyword_nv" class=" job-typeahead" placeholder="Tìm kiếm">
@@ -176,97 +162,14 @@
                     </div>
                     <a class="a-reset" href="">Reset</a>
                 </form>
-                <div class="list-staff">
-                    <form class="post_form clearfix" action="" name="post_form_register_pro" id="post_form_register_pro" method="post" enctype="multipart/form-data">
-                        <div class="note-dau">
-                            <div class="stt title-staff">
-                            </div>
-                            <div class="input-check title-staff">
-                                <input type="checkbox" name="all_checkbox" id="all_checkbox">
-                            </div>
-                            <div class="name-nv title-staff">
-                                <p>Mã nhân viên</p>
-                            </div>
-                            <div class="code title-staff">
-                                <p>Tên nhân viên</p>
-                            </div>
-                            <div class="phone title-staff">
-                                <p>Số điện thoại</p>
-                            </div>
-                            <div class="password title-staff">
-                                <p>Trạng thái</p>
-                            </div>
-                            <div class="phongban title-staff">
-                                <p>Phòng ban</p>
-                            </div>
-                            <div class="cmt title-staff">
-                                <p>Số CMT</p>
-                            </div>
-                            <div class="note title-staff">
-                                <p>Địa chỉ</p>
-                            </div>
-                            <div class="birtday title-staff">
-                                <p>Ngày sinh</p>
-                            </div>
-                           
-                        </div>
-                        
-                        <tbody>
-                            <?php while ($row = $q->fetch()): ?>
-                                <div class="list ">
-                            <div class="stt-list title-staff-list">
-                            </div>
-                            <div class="input-check-list title-staff-list">
-                                <input  class="checkbox_all" type="checkbox" value="<?php echo $item->id; ?>"  name="id_pub[]" id="cb<?php echo $i; ?>">
-                            </div>
-                           
-                            <div class="name-nv-list title-staff-list">
-                                <p><a href=""><?php echo htmlspecialchars($row['id_staff']); ?></a></p>
-                            </div>
-                            <div class="code-list title-staff-list">
-                                <p><?php echo htmlspecialchars($row['staff_name']); ?></p>
-                            </div>
-                            <div class="phone-list title-staff-list">
-                                <p><?php echo htmlspecialchars($row['phone_number']); ?></p>
-                            </div>
-                            <div class="password-list title-staff-list">
-                                <?php if($row['status']==1){ ?>
-                                    <a href="">
-                                        <img src="../../img/published.png" alt="published">
-                                    </a>
-                                <?php }else{ ?>
-
-                                    <a href="">
-                                        <img src="../../img/unpublished.png" alt="unpublished">
-                                    </a>
-                                <?php } ?>
-                            </div>
-                            <div class="phongban-list title-staff-list">
-                                <p><?php echo htmlspecialchars($row['id_department']); ?></p>
-                            </div>
-                            <div class="cmt-list title-staff-list">
-                                <p><?php echo htmlspecialchars($row['card_number']); ?></p>
-                            </div>
-                            <div class="node-list title-staff-list">
-                                <p><?php echo htmlspecialchars($row['staff_address']); ?></p>
-                            </div>
-                            <div class="birtday-list title-staff-list">
-                                <p><?php echo htmlspecialchars($row['birth_day']); ?></p>
-                            </div>
-                        </div>
-                            <?php endwhile; ?>
-                        </tbody>
-                    </form>
-                </div>
+                <table class="table">
+                  <thead></thead>
+                  <tbody></tbody>                                
+                </table>
             </div>
             </div>
         </div>
-    </div> -->
-    <table>
-      <tbody id="data">
-
-      </tbody>
-    </table>
+    </div>
   </section>
   <script>
     let sidebar = document.querySelector(".sidebar");
@@ -292,34 +195,43 @@
     }
   </script>
   <script>
-    fetch("http://localhost:8080/customer_manager/api/staff/read.php").then(
-      res=>{
-        res.json().then(
-          data=>{
-            console.log(data);
-            if(data.length > 0){
-              var temp = "";
-              
-              //Start for loop
-                data.forEach((u)=>{
-                  temp += "<tr>";
-                  temp += "<td>"+u.id_staff+"</td>";
-                  temp += "<td>"+u.staff_name+"</td>";
-                  temp += "<td>"+u.phone_number+"</td>";
-                  temp += "<td>"+u.status+"</td>";
-                  temp += "<td>"+u.id_department+"</td>";
-                  temp += "<td>"+u.card_number+"</td>";
-                  temp += "<td>"+u.birth_day+"</td>";
-                  temp += "<td>"+u.staff_address+"</td>";
-                })
-              //Close for loop
+    async function loadDataTable(url, table) {
+    const tableHead = table.querySelector("thead");
+    const tableBody = table.querySelector("tbody");
+    const response = await fetch(url);
+    const data = await response.json();
+    const headers = ["Mã Nhân Viên", "Tên nhân viên" , "Số điện thoại", "Trạng Thái", "Phòng Ban", "Số CMT", "Ngày Sinh", "Địa Chỉ"];
+    const rows = [];
 
-                document.getElementById("data").innerHTML = temp;
+    console.log(data);
+    tableHead.innerHTML = "<tr></tr>";
+    tableBody.innerHTML = "";
+
+    data.staff.map((e) => {
+          rows.push([e.id_staff, e.staff_name, e.phone_number,e.status,e.id_department, e.card_number, e.birth_day, e.staff_address])
+        })
+        // console.log(data);
+        tableHead.innerHTML = "<tr></tr>";
+        tableBody.innerHTML = "";
+
+        headers.map((text) => {
+          const headerElement = document.createElement("th");
+          headerElement.textContent = text;
+          tableHead.querySelector("tr").appendChild(headerElement);
+        });
+
+          for (const row of rows) {
+            const rowElement = document.createElement("tr")
+            for(const cellText of row) {
+              const cellElement = document.createElement("td");
+              cellElement.textContent = cellText;
+              rowElement.appendChild(cellElement);
             }
+            tableBody.appendChild(rowElement);
           }
-        )
+          
       }
-    )
-  </script>
+loadDataTable("http://localhost:8080/customer_manager/api/staff/read.php",document.querySelector(".table") );
+</script>
 </body>
 </html>

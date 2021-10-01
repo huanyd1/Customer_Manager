@@ -23,7 +23,7 @@
     $staff->id_department = $data->id_department;
     $staff->card_number = $data->card_number;
     $staff->birth_day = $data->birth_day;
-    $staff->ststaff_addressatus = $data->staff_address;
+    $staff->staff_address = $data->staff_address;
   
 
     if($staff->create()){

@@ -134,7 +134,7 @@
                 </div>
             </div>
             <div class="content-staff">
-                <h1><img src="../../img/add.png" alt="add">Thêm mới nhân viên</h1>
+                <h1><img src="../../img/edit.png" alt="add">Sửa thông tin nhân viên</h1>
                 <form class="post_form clearfix" action="" name="post_form_register_pro" id="post_form_register_pro" method="post" enctype="multipart/form-data">
                     <div class="form-controls">
                         <p class="name-input">Mã nhân viên:</p>
