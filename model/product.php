@@ -4,6 +4,7 @@
 
         #product properties
         public $id_product;
+        public $product_name;
         public $product_img;
         public $product_group;
         public $product_value;
@@ -38,6 +39,7 @@
             $stmt->execute();
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             $this->id_product = $row['id_product'];
+            $this->product_name = $row['product_name'];
             $this->product_img = $row['product_img'];
             $this->product_group = $row['product_group'];
             $this->product_value = $row['product_value'];
@@ -49,10 +51,11 @@
         }
 
         public function create(){
-            $query = "INSERT INTO product SET id_product=:id_product, product_img=:product_img, product_group=:product_group, product_value=:product_value, product_total=:product_total, product_sold=:product_sold, product_inventory=:product_inventory, status=:status ";
+            $query = "INSERT INTO product SET id_product=:id_product, product_name=:product_name, product_img=:product_img, product_group=:product_group, product_value=:product_value, product_total=:product_total, product_sold=:product_sold, product_inventory=:product_inventory, status=:status ";
             $stmt = $this->conn->prepare($query);
             //clean data
             $this->id_product = htmlspecialchars(strip_tags($this->id_product));
+            $this->product_name = htmlspecialchars(strip_tags($this->product_name));
             $this->product_img = htmlspecialchars(strip_tags($this->product_img));
             $this->product_group = htmlspecialchars(strip_tags($this->product_group));
             $this->product_value = htmlspecialchars(strip_tags($this->product_value));
@@ -62,6 +65,7 @@
             $this->status = htmlspecialchars(strip_tags($this->status));            
 
             $stmt->bindParam(':id_product', $this->id_product);
+            $stmt->bindParam(':product_name', $this->product_name);
             $stmt->bindParam(':product_img', $this->product_img);
             $stmt->bindParam(':product_group', $this->product_group);
             $stmt->bindParam(':product_value', $this->product_value);
@@ -78,10 +82,11 @@
         }
 
         public function update(){
-            $query = "UPDATE product SET id_product=:id_product, product_img=:product_img, product_group=:product_group, product_value=:product_value, product_total=:product_total, product_sold=:product_sold, product_inventory=:product_inventory, status=:status WHERE id_product=:id_product ";
+            $query = "UPDATE product SET id_product=:id_product, product_name=:product_name, product_img=:product_img, product_group=:product_group, product_value=:product_value, product_total=:product_total, product_sold=:product_sold, product_inventory=:product_inventory, status=:status WHERE id_product=:id_product ";
             $stmt = $this->conn->prepare($query);
             //clean data
             $this->id_product = htmlspecialchars(strip_tags($this->id_product));
+            $this->product_name = htmlspecialchars(strip_tags($this->product_name));
             $this->product_img = htmlspecialchars(strip_tags($this->product_img));            
             $this->product_group = htmlspecialchars(strip_tags($this->product_group));
             $this->product_value = htmlspecialchars(strip_tags($this->product_value));
@@ -91,6 +96,7 @@
             $this->status = htmlspecialchars(strip_tags($this->status));            
 
             $stmt->bindParam(':id_product', $this->id_product);
+            $stmt->bindParam(':product_name', $this->product_name);       
             $stmt->bindParam(':product_img', $this->product_img);
             $stmt->bindParam(':product_group', $this->product_group);
             $stmt->bindParam(':product_value', $this->product_value);

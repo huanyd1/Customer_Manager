@@ -1,6 +1,3 @@
-<?php
-    $id = $_GET['id'];
-?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -107,7 +104,7 @@
     <div class="container">
         <div class="staff">
             <div class="top-staff">
-                <h2>NHÂN VIÊN</h2>
+                <h2>CÔNG NỢ</h2>
                 <div class="top-btn-staff">
 
                     <div class="published inline">
@@ -137,19 +134,19 @@
                 </div>
             </div>
             <div class="content-staff">
-                <h1><img src="../../img/edit.png" alt="add">Sửa thông tin nhân viên</h1>
+                <h1><img src="../../img/add.png" alt="add">Thêm mới công nợ</h1>
                 <form class="post_form clearfix" action="" name="post_form_register_pro" id="post_form_register_pro" method="post" enctype="multipart/form-data">
                     <div class="form-controls">
-                        <p class="name-input">Mã nhân viên:</p>
+                        <p class="name-input">Mã công nợ:</p>
                         <div class="input">
-                            <input type="text" readonly=true name="id_staff" id="id_staff" value="">
+                            <input type="text" name="id_indebt" id="id_indebt" value="">
                         </div>
                     </div>
 
                     <div class="form-controls">
-                        <p class="name-input">Tên nhân viên:</p>
+                        <p class="name-input">Mã khách hàng:</p>
                         <div class="input">
-                            <input type="text" name="staff_name" id="staff_name" value="">
+                            <input type="text" name="id_customer" id="id_customer" value="">
                         </div>
                     </div>
 
@@ -161,6 +158,31 @@
                     </div>
 
                     <div class="form-controls">
+                        <p class="name-input">Tổng giá trị:</p>
+                        <div class="input">
+                            <input type="text" name="total_money" id="total_money" value="">
+                        </div>
+                    </div>
+
+                    <div class="form-controls">
+                        <p class="name-input">Hợp đồng:</p>
+                        <div class="input">
+                            <select name="contract" id="contract">
+                                <option value="">-- Chọn --</option>
+                                <option value="Khách Nợ Plantinum Cloud" >Khách Nợ Plantinum Cloud</option>
+                                <option value="Plantinum Cloud Nợ Khách">Plantinum Cloud Nợ Khách</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-controls">
+                        <p class="name-input">Ghi chú:</p>
+                        <div class="input">
+                            <input type="text" name="note" id="note" value="">
+                        </div>
+                    </div>
+
+                    <div class="form-controls">
                         <p class="name-input">Trạng thái:</p>
                         <div class="input">
                             <select name="status" id="status">
@@ -168,34 +190,6 @@
                                 <option value="1" >Hoạt động</option>
                                 <option value="0">Không hoạt động</option>
                             </select>
-                        </div>
-                    </div>
-
-                    <div class="form-controls">
-                        <p class="name-input">Phòng ban:</p>
-                        <div class="input">
-                            <input type="text" name="id_department" id="id_department" value="">
-                        </div>
-                    </div>
-
-                    <div class="form-controls">
-                        <p class="name-input">Số CMT:</p>
-                        <div class="input">
-                            <input type="text" name="card_number" id="card_number" value="">
-                        </div>
-                    </div>
-
-                    <div class="form-controls">
-                        <p class="name-input">Ngày sinh:</p>
-                        <div class="input">
-                            <input type="date" name="birth_day" id="birth_day" value="">
-                        </div>
-                    </div>
-
-                    <div class="form-controls">
-                        <p class="name-input">Địa chỉ:</p>
-                        <div class="input">
-                            <input type="text" name="staff_address" id="staff_address" value="">
                         </div>
                     </div>
                 </form>
@@ -227,11 +221,11 @@
     }
   </script>
   <script>
-      const addStaffForm = document.querySelector("#post_form_register_pro");
-      console.log(addStaffForm.status.value);
+      const addIndebtForm = document.querySelector("#post_form_register_pro");
+      //console.log(addStaffForm.status.value);
     //   const arrStaff = [];
-        var url = "http://localhost:8080/customer_manager/api/staff/update.php";
-       function editStaff(data){
+        var url = "http://localhost:8080/customer_manager/api/indebt/create.php";
+       function createIndebt(data){
         var options = {
             method: 'POST',
             header:{
@@ -245,42 +239,20 @@
       console.log(saveBtn);
 
       saveBtn.addEventListener("click", () => {
-        const infoStaff = {
-          id_staff: addStaffForm.id_staff.value,
-          staff_name: addStaffForm.staff_name.value,
-          phone_number: addStaffForm.phone_number.value,
-          status: addStaffForm.status.value,
-          id_department: addStaffForm.id_department.value,
-          card_number: addStaffForm.card_number.value,
-          birth_day: addStaffForm.birth_day.value,
-          staff_address: addStaffForm.staff_address.value,
+        const infoIndebt = {
+          id_debt: addIndebtForm.id_indebt.value,
+          id_customer: addIndebtForm.id_customer.value,
+          phone_number: addIndebtForm.phone_number.value,
+          total_money: addIndebtForm.total_money.value,
+          contract: addIndebtForm.contract.value,
+          note: addIndebtForm.note.value,
+          status: addIndebtForm.status.value,
       }
         //   arrStaff.push(infoStaff)
-          console.log(infoStaff)
-          editStaff(infoStaff);
-          window.location.href = "http://localhost:8080/customer_manager/view/staff/staff.php"
+          //console.log(infoStaff)
+          createIndebt(infoIndebt);
+          window.location.href = "http://localhost:8080/customer_manager/view/indebt/indebt.php"
       })
-  </script>
-  <script>
-    //   var url = "http://localhost:8080/customer_manager/api/staff/show.php?id=<?php echo $id?>"
-    //   console.log(url)
-      
-    async function loadDataTable(url, table) {
-        const response = await fetch(url);
-        const data = await response.json();
-        const editStaffForm = document.querySelector("#post_form_register_pro");
-        console.log(data);
-    
-        editStaffForm.id_staff.value = data.id_staff;
-        editStaffForm.staff_name.value = data.staff_name;
-        editStaffForm.phone_number.value = data.phone_number;
-        editStaffForm.status.value = data.status; 
-        editStaffForm.id_department.value = data.id_department; 
-        editStaffForm.card_number.value = data.card_number; 
-        editStaffForm.birth_day.value = data.birdth_day; 
-        editStaffForm.staff_address.value = data.staff_address;    
-    }
-    loadDataTable("http://localhost:8080/customer_manager/api/staff/show.php?id=<?php echo $id?>",document.querySelector(".table") );
   </script>
 </body>
 </html>

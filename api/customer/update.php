@@ -21,7 +21,7 @@
     $customer->customer_img = $data->customer_img;
     $customer->customer_address = $data->customer_address;
     $customer->total_order_value = $data->total_order_value;
-    $customer->contact = $data->contact;
+    $customer->contract = $data->contract;
     $customer->phone_number = $data->phone_number;
     $customer->customer_email = $data->customer_email;
     $customer->status = $data->status;

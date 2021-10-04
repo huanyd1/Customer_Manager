@@ -8,7 +8,7 @@
         public $customer_img;
         public $customer_address;
         public $total_order_value;
-        public $contact;
+        public $contract;
         public $phone_number;
         public $customer_email;
         public $status;
@@ -43,7 +43,7 @@
             $this->customer_img = $row['customer_img'];
             $this->customer_address = $row['customer_address'];
             $this->total_order_value = $row['total_order_value'];
-            $this->contact = $row['contact'];
+            $this->contract = $row['contract'];
             $this->phone_number = $row['phone_number'];
             $this->customer_email = $row['customer_email'];
             $this->status = $row['status'];
@@ -51,7 +51,7 @@
         }
 
         public function create(){
-            $query = "INSERT INTO customer SET id_customer=:id_customer, customer_name=:customer_name, customer_img=:customer_img, customer_address=:customer_address, total_order_value=:total_order_value, contact=:contact, phone_number=:phone_number, customer_email=:customer_email, status=:status ";
+            $query = "INSERT INTO customer SET id_customer=:id_customer, customer_name=:customer_name, customer_img=:customer_img, customer_address=:customer_address, total_order_value=:total_order_value, contract=:contract, phone_number=:phone_number, customer_email=:customer_email, status=:status ";
             $stmt = $this->conn->prepare($query);
             //clean data
             $this->id_customer = htmlspecialchars(strip_tags($this->id_customer));
@@ -59,7 +59,7 @@
             $this->customer_img = htmlspecialchars(strip_tags($this->customer_img));
             $this->customer_address = htmlspecialchars(strip_tags($this->customer_address));
             $this->total_order_value = htmlspecialchars(strip_tags($this->total_order_value));
-            $this->contact = htmlspecialchars(strip_tags($this->contact));
+            $this->contract = htmlspecialchars(strip_tags($this->contract));
             $this->phone_number = htmlspecialchars(strip_tags($this->phone_number));
             $this->customer_email = htmlspecialchars(strip_tags($this->customer_email));
             $this->status = htmlspecialchars(strip_tags($this->status));            
@@ -69,7 +69,7 @@
             $stmt->bindParam(':customer_img', $this->customer_img);
             $stmt->bindParam(':customer_address', $this->customer_address);
             $stmt->bindParam(':total_order_value', $this->total_order_value);
-            $stmt->bindParam(':contact', $this->contact);
+            $stmt->bindParam(':contract', $this->contract);
             $stmt->bindParam(':phone_number', $this->phone_number);
             $stmt->bindParam(':customer_email', $this->customer_email);
             $stmt->bindParam(':status', $this->status);
@@ -82,7 +82,7 @@
         }
 
         public function update(){
-            $query = "UPDATE customer SET id_customer=:id_customer, customer_name=:customer_name, customer_img=:customer_img, customer_address=:customer_address, total_order_value=:total_order_value, contact=:contact, phone_number=:phone_number, customer_email=:customer_email, status=:status WHERE id_customer=:id_customer ";
+            $query = "UPDATE customer SET id_customer=:id_customer, customer_name=:customer_name, customer_img=:customer_img, customer_address=:customer_address, total_order_value=:total_order_value, contract=:contract, phone_number=:phone_number, customer_email=:customer_email, status=:status WHERE id_customer=:id_customer ";
             $stmt = $this->conn->prepare($query);
             //clean data
             $this->id_customer = htmlspecialchars(strip_tags($this->id_customer));
@@ -90,7 +90,7 @@
             $this->customer_img = htmlspecialchars(strip_tags($this->customer_img));
             $this->customer_address = htmlspecialchars(strip_tags($this->customer_address));
             $this->total_order_value = htmlspecialchars(strip_tags($this->total_order_value));
-            $this->contact = htmlspecialchars(strip_tags($this->contact));
+            $this->contract = htmlspecialchars(strip_tags($this->contract));
             $this->phone_number = htmlspecialchars(strip_tags($this->phone_number));
             $this->customer_email = htmlspecialchars(strip_tags($this->customer_email));
             $this->dstatus = htmlspecialchars(strip_tags($this->status));            
@@ -100,7 +100,7 @@
             $stmt->bindParam(':customer_img', $this->customer_img);
             $stmt->bindParam(':customer_address', $this->customer_address);
             $stmt->bindParam(':total_order_value', $this->total_order_value);
-            $stmt->bindParam(':contact', $this->contact);
+            $stmt->bindParam(':contract', $this->contract);
             $stmt->bindParam(':phone_number', $this->phone_number);
             $stmt->bindParam(':customer_email', $this->customer_email);
             $stmt->bindParam(':status', $this->status);

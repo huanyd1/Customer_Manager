@@ -113,18 +113,12 @@
         <div class="home">
             <div class="staff">
                 <div class="top-staff">
-                    <h1>ĐƠN HÀNG</h1>
+                    <h1>KHÁCH HÀNG</h1>
                     <div class="top-btn-staff">
                         <div class="not-published inline" id="published">
-                            <a class="a-not-published a-btn" href="add_order.php">
+                            <a class="a-not-published a-btn" href="add_customer.php">
                                 <img src="../../img/add.png" alt="pls">
                                 <span class="span-text">Thêm mới</span>
-                            </a>
-                        </div>
-                        <div class="not-published inline" id="published">
-                            <a class="a-not-published a-btn" href="../department/department.php">
-                                <img src="../../img/edit.png" alt="pls">
-                                <span class="span-text">Phòng ban</span>
                             </a>
                         </div>
                         <div class="not-published inline" id="published">
@@ -159,9 +153,8 @@
                 <div class="content-staff">
                 <form class="form-loc" action="" name="search_form_filter" id="search_form_filter" method="get" onsubmit="javascript: submitnv();return false;">
                     <select class="select-room" name="reference" id="reference">
-                        <option value="0">Mã Nhân Viên</option>
-                        <option value="46">Tên Nhân Viên</option>
-                        <option value="45">Phòng Ban</option>
+                        <option value="0">Mã Khách Hàng</option>
+                        <option value="46">Tên Khách Hàng</option>
                     </select>
                     <div class="search">
                         <input type="text" name="keyword_nv" id="keyword_nv" onkeyup="searchStaff()" class=" job-typeahead" placeholder="Tìm kiếm">
@@ -187,7 +180,7 @@
 				<div class="icon-box">
 					<i class="material-icons">&#xE5CD;</i>
 				</div>						
-				<h4 class="modal-title w-100">Bạn có chắc chắn?</h4>	
+				<h4 class="modal-title w-100">Are you sure?</h4>	
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 			</div>
 			<div class="modal-body">
@@ -196,7 +189,7 @@
 			<div class="modal-footer justify-content-center">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Trở lại</button>
         
-				<a  class="btn btn-danger delete_staff">Đồng ý</a>
+				<a  class="btn btn-danger delete_department">Đồng ý</a>
 			</div>
 		</div>
 	</div>
@@ -230,7 +223,7 @@
     const tableBody = table.querySelector("tbody");
     const response = await fetch(url);
     const data = await response.json();
-    const headers = ["Mã Đơn Hàng", "Số Đơn Hàng" , "Ngày", "Mã Khách Hàng", "Mã Sản Phẩm", "Giá Trị Đơn Hàng", "Mã Nhân Viên", "Trạng Thái", "Tùy Chọn"];
+    const headers = ["Mã Khách Hàng", "Tên Khách Hàng", "Ảnh", "Địa Chỉ", "Tổng Giá Trị Đơn", "Số Hợp Đồng", "Số ĐT", "Email", "Trạng Thái", "Tùy Chọn"];
     const rows = [];
     let idStaff = ""
     console.log(data);
@@ -238,11 +231,11 @@
     tableBody.innerHTML = "";
     
     
-    data.order.map((e) => { 
-      const staffDeleteBtn = document.querySelector(".btn.delete_staff");
-      staffDeleteBtn.href = `delete_staff.php?id=${e.id_staff}`;
+    data.customer.map((e) => { 
+      const departmentDeleteBtn = document.querySelector(".btn.delete_department");
+      departmentDeleteBtn.href = `delete_department.php?id=${e.id_department}`;
 
-          rows.push([e.id_order, e.number_order, e.date_order, e.id_customer, e.id_product, e.order_value, e.id_staff, e.status,`<a class="edit" href="edit_order.php?id=${e.id_order}" ><i class='bx bxs-edit' ></i></a> <a class="delete trigger-btn" href="#myModal"  data-toggle="modal" click="reply_click(${e.id_staff})"><i class='bx bxs-trash'></i></a>`])
+          rows.push([e.id_customer, e.customer_name, e.customer_img, e.customer_address, e.total_order_value, e.contract, e.phone_number, e.customer_email, e.status, `<a class="edit" href="edit_customer.php?id=${e.id_customer}" ><i class='bx bxs-edit' ></i></a> <a class="delete trigger-btn" href="#myModal"  data-toggle="modal" click="reply_click(${e.id_staff})"><i class='bx bxs-trash'></i></a>`])
 
         })
         // console.log(data);
@@ -275,8 +268,11 @@
               })  
             })
       }
-loadDataTable("http://localhost:8080/customer_manager/api/order/read.php",document.querySelector(".table") );
-
+loadDataTable("http://localhost:8080/customer_manager/api/customer/read.php",document.querySelector(".table") );
+function reply_click(clicked_id)
+  {
+      alert(clicked_id);
+  }
 </script>
 </body>
 </html>

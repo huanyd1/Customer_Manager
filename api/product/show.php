@@ -19,6 +19,7 @@
 
     $product_item = array(
         'id_product' => $product->id_product,
+        'product_name' => $product->product_name,
         'product_img' => $product->product_img,
         'product_group' => $product->product_group,
         'product_value' => $product->product_value,

@@ -30,7 +30,7 @@
                 'customer_img' => $customer_img,
                 'customer_address' => $customer_address,
                 'total_order_value' => $total_order_value,
-                'contact' => $contact,
+                'contract' => $contract,
                 'phone_number' => $phone_number,
                 'customer_email' => $customer_email,
                 'status' => $status

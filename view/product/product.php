@@ -113,10 +113,10 @@
         <div class="home">
             <div class="staff">
                 <div class="top-staff">
-                    <h1>ĐƠN HÀNG</h1>
+                    <h1>SẢN PHẨM</h1>
                     <div class="top-btn-staff">
                         <div class="not-published inline" id="published">
-                            <a class="a-not-published a-btn" href="add_order.php">
+                            <a class="a-not-published a-btn" href="add_product.php">
                                 <img src="../../img/add.png" alt="pls">
                                 <span class="span-text">Thêm mới</span>
                             </a>
@@ -145,7 +145,7 @@
                                 <span class="span-text">Excel</span>
                             </a>
                             <form class="form-horizontal" name="show_list_user">
-                                <input type="hidden" id="link_export" value="">
+                                <input type="hidden" id="link_export" value="https://khachhang.bachkim.com.vn/index.php?module=debt&amp;view=home&amp;task=export_video&amp;raw=1">
                             </form>
                         </div>
                         <div class="not-published inline">
@@ -230,7 +230,7 @@
     const tableBody = table.querySelector("tbody");
     const response = await fetch(url);
     const data = await response.json();
-    const headers = ["Mã Đơn Hàng", "Số Đơn Hàng" , "Ngày", "Mã Khách Hàng", "Mã Sản Phẩm", "Giá Trị Đơn Hàng", "Mã Nhân Viên", "Trạng Thái", "Tùy Chọn"];
+    const headers = ["Mã Sản Phẩm", "Tên Sản Phẩm" , "Ảnh", "Nhóm Sản Phẩm", "Giá Trị", "Tổng Có", "Đã Bán", "Còn Lại", "Trạng Thái", "Tùy Chọn"];
     const rows = [];
     let idStaff = ""
     console.log(data);
@@ -238,11 +238,11 @@
     tableBody.innerHTML = "";
     
     
-    data.order.map((e) => { 
+    data.product.map((e) => { 
       const staffDeleteBtn = document.querySelector(".btn.delete_staff");
       staffDeleteBtn.href = `delete_staff.php?id=${e.id_staff}`;
 
-          rows.push([e.id_order, e.number_order, e.date_order, e.id_customer, e.id_product, e.order_value, e.id_staff, e.status,`<a class="edit" href="edit_order.php?id=${e.id_order}" ><i class='bx bxs-edit' ></i></a> <a class="delete trigger-btn" href="#myModal"  data-toggle="modal" click="reply_click(${e.id_staff})"><i class='bx bxs-trash'></i></a>`])
+          rows.push([e.id_product, e.product_name, e.product_img, e.product_group, e.product_value, e.product_total, e.product_sold, e.product_inventory, e.status, `<a class="edit" href="edit_product.php?id=${e.id_product}" ><i class='bx bxs-edit' ></i></a> <a class="delete trigger-btn" href="#myModal"  data-toggle="modal" click="reply_click(${e.id_staff})"><i class='bx bxs-trash'></i></a>`])
 
         })
         // console.log(data);
@@ -275,8 +275,11 @@
               })  
             })
       }
-loadDataTable("http://localhost:8080/customer_manager/api/order/read.php",document.querySelector(".table") );
-
+loadDataTable("http://localhost:8080/customer_manager/api/product/read.php",document.querySelector(".table") );
+function reply_click(clicked_id)
+  {
+      alert(clicked_id);
+  }
 </script>
 </body>
 </html>

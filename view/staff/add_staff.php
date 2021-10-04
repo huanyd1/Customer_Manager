@@ -171,7 +171,8 @@
                     <div class="form-controls">
                         <p class="name-input">Phòng ban:</p>
                         <div class="input">
-                            <input type="text" name="id_department" id="id_department" value="">
+                            <select name="id_department" id="id_department">
+                            </select>                        
                         </div>
                     </div>
 
@@ -185,7 +186,7 @@
                     <div class="form-controls">
                         <p class="name-input">Ngày sinh:</p>
                         <div class="input">
-                            <input type="text" name="birth_day" id="birth_day" value="">
+                            <input type="date" name="birth_day" id="birth_day" value="">
                         </div>
                     </div>
 
@@ -225,7 +226,7 @@
   </script>
   <script>
       const addStaffForm = document.querySelector("#post_form_register_pro");
-      console.log(addStaffForm.status.value);
+      //console.log(addStaffForm.status.value);
     //   const arrStaff = [];
         var url = "http://localhost:8080/customer_manager/api/staff/create.php";
        function createStaff(data){
@@ -253,8 +254,9 @@
           staff_address: addStaffForm.staff_address.value,
       }
         //   arrStaff.push(infoStaff)
-          console.log(infoStaff)
+          //console.log(infoStaff)
           createStaff(infoStaff);
+          window.location.href = "http://localhost:8080/customer_manager/view/staff/staff.php"
       })
   </script>
 </body>

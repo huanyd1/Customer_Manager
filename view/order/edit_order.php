@@ -107,7 +107,7 @@
     <div class="container">
         <div class="staff">
             <div class="top-staff">
-                <h2>NHÂN VIÊN</h2>
+                <h2>ĐƠN HÀNG</h2>
                 <div class="top-btn-staff">
 
                     <div class="published inline">
@@ -137,26 +137,54 @@
                 </div>
             </div>
             <div class="content-staff">
-                <h1><img src="../../img/edit.png" alt="add">Sửa thông tin nhân viên</h1>
+                <h1><img src="../../img/edit.png" alt="add">Sửa thông tin đơn hàng</h1>
                 <form class="post_form clearfix" action="" name="post_form_register_pro" id="post_form_register_pro" method="post" enctype="multipart/form-data">
-                    <div class="form-controls">
-                        <p class="name-input">Mã nhân viên:</p>
+                <div class="form-controls">
+                        <p class="name-input">Mã đơn hàng:</p>
                         <div class="input">
-                            <input type="text" readonly=true name="id_staff" id="id_staff" value="">
+                            <input type="text" name="id_order" id="id_order" value="">
                         </div>
                     </div>
 
                     <div class="form-controls">
-                        <p class="name-input">Tên nhân viên:</p>
+                        <p class="name-input">Số đơn hàng:</p>
                         <div class="input">
-                            <input type="text" name="staff_name" id="staff_name" value="">
+                            <input type="text" name="number_order" id="number_order" value="">
                         </div>
                     </div>
 
                     <div class="form-controls">
-                        <p class="name-input">Số điện thoại:</p>
+                        <p class="name-input">Ngày đặt hàng:</p>
                         <div class="input">
-                            <input type="text" name="phone_number" id="phone_number" value="">
+                            <input type="date" name="date_order" id="date_order" value="">
+                        </div>
+                    </div>
+
+                    <div class="form-controls">
+                        <p class="name-input">Khách hàng:</p>
+                        <div class="input">
+                            <input type="text" name="id_customer" id="id_customer" value="">
+                        </div>
+                    </div>
+
+                    <div class="form-controls">
+                        <p class="name-input">Sản phẩm:</p>
+                        <div class="input">
+                            <input type="text" name="id_product" id="id_product" value="">
+                        </div>
+                    </div>
+
+                    <div class="form-controls">
+                        <p class="name-input">Giá trị đơn hàng:</p>
+                        <div class="input">
+                            <input type="text" name="order_value" id="order_value" value="">
+                        </div>
+                    </div>
+
+                    <div class="form-controls">
+                        <p class="name-input">Nhân viên thực hiện:</p>
+                        <div class="input">
+                            <input type="text" name="id_staff" id="id_staff" value="">
                         </div>
                     </div>
 
@@ -165,37 +193,9 @@
                         <div class="input">
                             <select name="status" id="status">
                                 <option value="">-- Chọn --</option>
-                                <option value="1" >Hoạt động</option>
+                                <option value="1">Hoạt động</option>
                                 <option value="0">Không hoạt động</option>
                             </select>
-                        </div>
-                    </div>
-
-                    <div class="form-controls">
-                        <p class="name-input">Phòng ban:</p>
-                        <div class="input">
-                            <input type="text" name="id_department" id="id_department" value="">
-                        </div>
-                    </div>
-
-                    <div class="form-controls">
-                        <p class="name-input">Số CMT:</p>
-                        <div class="input">
-                            <input type="text" name="card_number" id="card_number" value="">
-                        </div>
-                    </div>
-
-                    <div class="form-controls">
-                        <p class="name-input">Ngày sinh:</p>
-                        <div class="input">
-                            <input type="date" name="birth_day" id="birth_day" value="">
-                        </div>
-                    </div>
-
-                    <div class="form-controls">
-                        <p class="name-input">Địa chỉ:</p>
-                        <div class="input">
-                            <input type="text" name="staff_address" id="staff_address" value="">
                         </div>
                     </div>
                 </form>
@@ -227,11 +227,11 @@
     }
   </script>
   <script>
-      const addStaffForm = document.querySelector("#post_form_register_pro");
-      console.log(addStaffForm.status.value);
+      const editOrderForm = document.querySelector("#post_form_register_pro");
+      //console.log(addStaffForm.status.value);
     //   const arrStaff = [];
-        var url = "http://localhost:8080/customer_manager/api/staff/update.php";
-       function editStaff(data){
+        var url = "http://localhost:8080/customer_manager/api/order/update.php";
+       function editOrder(data){
         var options = {
             method: 'POST',
             header:{
@@ -245,42 +245,39 @@
       console.log(saveBtn);
 
       saveBtn.addEventListener("click", () => {
-        const infoStaff = {
-          id_staff: addStaffForm.id_staff.value,
-          staff_name: addStaffForm.staff_name.value,
-          phone_number: addStaffForm.phone_number.value,
-          status: addStaffForm.status.value,
-          id_department: addStaffForm.id_department.value,
-          card_number: addStaffForm.card_number.value,
-          birth_day: addStaffForm.birth_day.value,
-          staff_address: addStaffForm.staff_address.value,
+        const infoOrder = {
+          id_order: editOrderForm.id_order.value,
+          number_order: editOrderForm.number_order.value,
+          date_order: editOrderForm.date_order.value,
+          id_customer: editOrderForm.id_customer.value,
+          id_product: editOrderForm.id_product.value,
+          order_value: editOrderForm.order_value.value,
+          id_staff: editOrderForm.id_staff.value,
+          status: editOrderForm.status.value,
       }
         //   arrStaff.push(infoStaff)
-          console.log(infoStaff)
-          editStaff(infoStaff);
-          window.location.href = "http://localhost:8080/customer_manager/view/staff/staff.php"
+          //console.log(infoStaff)
+          editOrder(infoOrder);
+          window.location.href = "http://localhost:8080/customer_manager/view/order/order.php"
       })
   </script>
   <script>
-    //   var url = "http://localhost:8080/customer_manager/api/staff/show.php?id=<?php echo $id?>"
-    //   console.log(url)
-      
     async function loadDataTable(url, table) {
         const response = await fetch(url);
         const data = await response.json();
-        const editStaffForm = document.querySelector("#post_form_register_pro");
-        console.log(data);
+        const editOrderForm = document.querySelector("#post_form_register_pro");
+        //console.log(data);
     
-        editStaffForm.id_staff.value = data.id_staff;
-        editStaffForm.staff_name.value = data.staff_name;
-        editStaffForm.phone_number.value = data.phone_number;
-        editStaffForm.status.value = data.status; 
-        editStaffForm.id_department.value = data.id_department; 
-        editStaffForm.card_number.value = data.card_number; 
-        editStaffForm.birth_day.value = data.birdth_day; 
-        editStaffForm.staff_address.value = data.staff_address;    
+        editOrderForm.id_order.value = data.id_order;
+        editOrderForm.number_order.value = data.number_order;
+        editOrderForm.date_order.value = data.date_order;
+        editOrderForm.id_customer.value = data.id_customer; 
+        editOrderForm.id_product.value = data.id_product; 
+        editOrderForm.order_value.value = data.order_value; 
+        editOrderForm.id_staff.value = data.id_staff; 
+        editOrderForm.status.value = data.status;    
     }
-    loadDataTable("http://localhost:8080/customer_manager/api/staff/show.php?id=<?php echo $id?>",document.querySelector(".table") );
+    loadDataTable("http://localhost:8080/customer_manager/api/order/show.php?id=<?php echo $id?>",document.querySelector(".table") );
   </script>
 </body>
 </html>

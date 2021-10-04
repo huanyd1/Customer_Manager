@@ -23,7 +23,7 @@
         'customer_img' => $customer->customer_img,
         'customer_address' => $customer->customer_address,
         'total_order_value' => $customer->total_order_value,
-        'contact' => $customer->contact,
+        'contract' => $customer->contract,
         'phone_number' => $customer->phone_number,
         'customer_email' => $customer->customer_email,
         'status' => $customer->status

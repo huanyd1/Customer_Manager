@@ -20,7 +20,7 @@
     $department_item = array(
         'id_department' => $department->id_department,
         'department_name' => $department->department_name,
-        'status' => $department->department_status
+        'status' => $department->status
     );
     print_r(json_encode($department_item));
 

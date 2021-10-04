@@ -146,7 +146,7 @@
                     <div class="form-controls">
                         <p class="name-input">Số đơn hàng:</p>
                         <div class="input">
-                            <input type="text" name="order_number" id="order_number" value="">
+                            <input type="text" name="number_order" id="number_order" value="">
                         </div>
                     </div>
 
@@ -222,6 +222,41 @@
       closeBtn.classList.replace("bx-menu-alt-right","bx-menu");
     }
     }
+  </script>
+   <script>
+      const addOrderForm = document.querySelector("#post_form_register_pro");
+      //console.log(addStaffForm.status.value);
+    //   const arrStaff = [];
+        var url = "http://localhost:8080/customer_manager/api/order/create.php";
+       function createOrder(data){
+        var options = {
+            method: 'POST',
+            header:{
+                'Content-Type' : 'application/json'
+            },
+            body: JSON.stringify(data),
+        };
+        fetch(url, options)
+        }
+      const saveBtn = document.querySelector(".excel.inline");
+      console.log(saveBtn);
+
+      saveBtn.addEventListener("click", () => {
+        const infoOrder = {
+          id_order: addOrderForm.id_order.value,
+          number_order: addOrderForm.number_order.value,
+          date_order: addOrderForm.date_order.value,
+          id_customer: addOrderForm.id_customer.value,
+          id_product: addOrderForm.id_product.value,
+          order_value: addOrderForm.order_value.value,
+          id_staff: addOrderForm.id_staff.value,
+          status: addOrderForm.status.value,
+      }
+        //   arrStaff.push(infoStaff)
+          //console.log(infoStaff)
+          createOrder(infoOrder);
+          window.location.href = "http://localhost:8080/customer_manager/view/order/order.php"
+      })
   </script>
 </body>
 </html>

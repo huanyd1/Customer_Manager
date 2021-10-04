@@ -113,10 +113,10 @@
         <div class="home">
             <div class="staff">
                 <div class="top-staff">
-                    <h1>ĐƠN HÀNG</h1>
+                    <h1>CÔNG NỢ</h1>
                     <div class="top-btn-staff">
                         <div class="not-published inline" id="published">
-                            <a class="a-not-published a-btn" href="add_order.php">
+                            <a class="a-not-published a-btn" href="add_indebt.php">
                                 <img src="../../img/add.png" alt="pls">
                                 <span class="span-text">Thêm mới</span>
                             </a>
@@ -230,7 +230,7 @@
     const tableBody = table.querySelector("tbody");
     const response = await fetch(url);
     const data = await response.json();
-    const headers = ["Mã Đơn Hàng", "Số Đơn Hàng" , "Ngày", "Mã Khách Hàng", "Mã Sản Phẩm", "Giá Trị Đơn Hàng", "Mã Nhân Viên", "Trạng Thái", "Tùy Chọn"];
+    const headers = ["Mã Công Nợ", "Mã Khách Hàng" , "Số điện thoại", "Tổng Số Tiền", "Hợp Đồng", "Ghi Chú", "Trạng Thái", "Tùy Chọn"];
     const rows = [];
     let idStaff = ""
     console.log(data);
@@ -238,11 +238,11 @@
     tableBody.innerHTML = "";
     
     
-    data.order.map((e) => { 
+    data.indebt.map((e) => { 
       const staffDeleteBtn = document.querySelector(".btn.delete_staff");
       staffDeleteBtn.href = `delete_staff.php?id=${e.id_staff}`;
 
-          rows.push([e.id_order, e.number_order, e.date_order, e.id_customer, e.id_product, e.order_value, e.id_staff, e.status,`<a class="edit" href="edit_order.php?id=${e.id_order}" ><i class='bx bxs-edit' ></i></a> <a class="delete trigger-btn" href="#myModal"  data-toggle="modal" click="reply_click(${e.id_staff})"><i class='bx bxs-trash'></i></a>`])
+          rows.push([e.id_debt, e.id_customer, e.phone_number, e.total_money, e.contract, e.note, e.status,`<a class="edit" href="edit_indebt.php?id=${e.id_debt}" ><i class='bx bxs-edit' ></i></a> <a class="delete trigger-btn" href="#myModal"  data-toggle="modal" click="reply_click(${e.id_staff})"><i class='bx bxs-trash'></i></a>`])
 
         })
         // console.log(data);
@@ -275,8 +275,11 @@
               })  
             })
       }
-loadDataTable("http://localhost:8080/customer_manager/api/order/read.php",document.querySelector(".table") );
-
+loadDataTable("http://localhost:8080/customer_manager/api/indebt/read.php",document.querySelector(".table") );
+function reply_click(clicked_id)
+  {
+      alert(clicked_id);
+  }
 </script>
 </body>
 </html>

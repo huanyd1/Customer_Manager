@@ -1,6 +1,3 @@
-<?php
-    $id = $_GET['id'];
-?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -107,7 +104,7 @@
     <div class="container">
         <div class="staff">
             <div class="top-staff">
-                <h2>NHÂN VIÊN</h2>
+                <h2>KHÁCH HÀNG</h2>
                 <div class="top-btn-staff">
 
                     <div class="published inline">
@@ -137,26 +134,61 @@
                 </div>
             </div>
             <div class="content-staff">
-                <h1><img src="../../img/edit.png" alt="add">Sửa thông tin nhân viên</h1>
+                <h1><img src="../../img/add.png" alt="add">Thêm mới khách hàng</h1>
                 <form class="post_form clearfix" action="" name="post_form_register_pro" id="post_form_register_pro" method="post" enctype="multipart/form-data">
                     <div class="form-controls">
-                        <p class="name-input">Mã nhân viên:</p>
+                        <p class="name-input">Mã khách hàng:</p>
                         <div class="input">
-                            <input type="text" readonly=true name="id_staff" id="id_staff" value="">
+                            <input type="text" name="id_customer" id="id_customer" value="">
                         </div>
                     </div>
 
                     <div class="form-controls">
-                        <p class="name-input">Tên nhân viên:</p>
+                        <p class="name-input">Tên khách hàng:</p>
                         <div class="input">
-                            <input type="text" name="staff_name" id="staff_name" value="">
+                            <input type="text" name="customer_name" id="customer_name" value="">
                         </div>
                     </div>
 
                     <div class="form-controls">
-                        <p class="name-input">Số điện thoại:</p>
+                        <p class="name-input">Ảnh:</p>
+                        <div class="input">
+                            <input type="text" name="customer_img" id="customer_img" value="">
+                        </div>
+                    </div>
+
+                    <div class="form-controls">
+                        <p class="name-input">Địa Chỉ:</p>
+                        <div class="input">
+                            <input type="text" name="customer_address" id="customer_address" value="">
+                        </div>
+                    </div>
+
+                    <div class="form-controls">
+                        <p class="name-input">Tổng giá trị đơn:</p>
+                        <div class="input">
+                            <input type="text" name="total_order_value" id="total_order_value" value="">
+                        </div>
+                    </div>
+
+                    <div class="form-controls">
+                        <p class="name-input">Số hợp đồng:</p>
+                        <div class="input">
+                            <input type="text" name="contract" id="contract" value="">
+                        </div>
+                    </div>
+
+                    <div class="form-controls">
+                        <p class="name-input">Số ĐT:</p>
                         <div class="input">
                             <input type="text" name="phone_number" id="phone_number" value="">
+                        </div>
+                    </div>
+
+                    <div class="form-controls">
+                        <p class="name-input">Email:</p>
+                        <div class="input">
+                            <input type="text" name="customer_email" id="customer_email" value="">
                         </div>
                     </div>
 
@@ -168,34 +200,6 @@
                                 <option value="1" >Hoạt động</option>
                                 <option value="0">Không hoạt động</option>
                             </select>
-                        </div>
-                    </div>
-
-                    <div class="form-controls">
-                        <p class="name-input">Phòng ban:</p>
-                        <div class="input">
-                            <input type="text" name="id_department" id="id_department" value="">
-                        </div>
-                    </div>
-
-                    <div class="form-controls">
-                        <p class="name-input">Số CMT:</p>
-                        <div class="input">
-                            <input type="text" name="card_number" id="card_number" value="">
-                        </div>
-                    </div>
-
-                    <div class="form-controls">
-                        <p class="name-input">Ngày sinh:</p>
-                        <div class="input">
-                            <input type="date" name="birth_day" id="birth_day" value="">
-                        </div>
-                    </div>
-
-                    <div class="form-controls">
-                        <p class="name-input">Địa chỉ:</p>
-                        <div class="input">
-                            <input type="text" name="staff_address" id="staff_address" value="">
                         </div>
                     </div>
                 </form>
@@ -227,11 +231,11 @@
     }
   </script>
   <script>
-      const addStaffForm = document.querySelector("#post_form_register_pro");
-      console.log(addStaffForm.status.value);
+      const addCustomerForm = document.querySelector("#post_form_register_pro");
+      //console.log(addStaffForm.status.value);
     //   const arrStaff = [];
-        var url = "http://localhost:8080/customer_manager/api/staff/update.php";
-       function editStaff(data){
+        var url = "http://localhost:8080/customer_manager/api/customer/create.php";
+       function createCustomer(data){
         var options = {
             method: 'POST',
             header:{
@@ -245,42 +249,22 @@
       console.log(saveBtn);
 
       saveBtn.addEventListener("click", () => {
-        const infoStaff = {
-          id_staff: addStaffForm.id_staff.value,
-          staff_name: addStaffForm.staff_name.value,
-          phone_number: addStaffForm.phone_number.value,
-          status: addStaffForm.status.value,
-          id_department: addStaffForm.id_department.value,
-          card_number: addStaffForm.card_number.value,
-          birth_day: addStaffForm.birth_day.value,
-          staff_address: addStaffForm.staff_address.value,
+        const infoCustomer = {
+          id_customer: addCustomerForm.id_customer.value,
+          customer_name: addCustomerForm.customer_name.value,
+          customer_img: addCustomerForm.customer_img.value,
+          customer_address: addCustomerForm.customer_address.value,
+          total_order_value: addCustomerForm.total_order_value.value,
+          contract: addCustomerForm.contract.value,
+          phone_number: addCustomerForm.phone_number.value,
+          customer_email: addCustomerForm.customer_email.value,
+          status: addCustomerForm.status.value,
       }
         //   arrStaff.push(infoStaff)
-          console.log(infoStaff)
-          editStaff(infoStaff);
-          window.location.href = "http://localhost:8080/customer_manager/view/staff/staff.php"
+          //console.log(infoStaff)
+          createCustomer(infoCustomer);
+          //window.location.href = "http://localhost:8080/customer_manager/view/customer/customer.php"
       })
-  </script>
-  <script>
-    //   var url = "http://localhost:8080/customer_manager/api/staff/show.php?id=<?php echo $id?>"
-    //   console.log(url)
-      
-    async function loadDataTable(url, table) {
-        const response = await fetch(url);
-        const data = await response.json();
-        const editStaffForm = document.querySelector("#post_form_register_pro");
-        console.log(data);
-    
-        editStaffForm.id_staff.value = data.id_staff;
-        editStaffForm.staff_name.value = data.staff_name;
-        editStaffForm.phone_number.value = data.phone_number;
-        editStaffForm.status.value = data.status; 
-        editStaffForm.id_department.value = data.id_department; 
-        editStaffForm.card_number.value = data.card_number; 
-        editStaffForm.birth_day.value = data.birdth_day; 
-        editStaffForm.staff_address.value = data.staff_address;    
-    }
-    loadDataTable("http://localhost:8080/customer_manager/api/staff/show.php?id=<?php echo $id?>",document.querySelector(".table") );
   </script>
 </body>
 </html>

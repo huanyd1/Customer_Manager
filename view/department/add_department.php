@@ -1,6 +1,3 @@
-<?php
-    $id = $_GET['id'];
-?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -107,7 +104,7 @@
     <div class="container">
         <div class="staff">
             <div class="top-staff">
-                <h2>NHÂN VIÊN</h2>
+                <h2>PHÒNG BAN</h2>
                 <div class="top-btn-staff">
 
                     <div class="published inline">
@@ -137,65 +134,30 @@
                 </div>
             </div>
             <div class="content-staff">
-                <h1><img src="../../img/edit.png" alt="add">Sửa thông tin nhân viên</h1>
+                <h1><img src="../../img/add.png" alt="add">Thêm mới phòng ban</h1>
                 <form class="post_form clearfix" action="" name="post_form_register_pro" id="post_form_register_pro" method="post" enctype="multipart/form-data">
                     <div class="form-controls">
-                        <p class="name-input">Mã nhân viên:</p>
-                        <div class="input">
-                            <input type="text" readonly=true name="id_staff" id="id_staff" value="">
-                        </div>
-                    </div>
-
-                    <div class="form-controls">
-                        <p class="name-input">Tên nhân viên:</p>
-                        <div class="input">
-                            <input type="text" name="staff_name" id="staff_name" value="">
-                        </div>
-                    </div>
-
-                    <div class="form-controls">
-                        <p class="name-input">Số điện thoại:</p>
-                        <div class="input">
-                            <input type="text" name="phone_number" id="phone_number" value="">
-                        </div>
-                    </div>
-
-                    <div class="form-controls">
-                        <p class="name-input">Trạng thái:</p>
-                        <div class="input">
-                            <select name="status" id="status">
-                                <option value="">-- Chọn --</option>
-                                <option value="1" >Hoạt động</option>
-                                <option value="0">Không hoạt động</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-controls">
-                        <p class="name-input">Phòng ban:</p>
+                        <p class="name-input">Mã phòng ban:</p>
                         <div class="input">
                             <input type="text" name="id_department" id="id_department" value="">
                         </div>
                     </div>
 
                     <div class="form-controls">
-                        <p class="name-input">Số CMT:</p>
+                        <p class="name-input">Tên phòng ban:</p>
                         <div class="input">
-                            <input type="text" name="card_number" id="card_number" value="">
+                            <input type="text" name="department_name" id="department_name" value="">
                         </div>
                     </div>
 
                     <div class="form-controls">
-                        <p class="name-input">Ngày sinh:</p>
+                        <p class="name-input">Trạng thái:</p>
                         <div class="input">
-                            <input type="date" name="birth_day" id="birth_day" value="">
-                        </div>
-                    </div>
-
-                    <div class="form-controls">
-                        <p class="name-input">Địa chỉ:</p>
-                        <div class="input">
-                            <input type="text" name="staff_address" id="staff_address" value="">
+                            <select name="department_status" id="department_status">
+                                <option value="">-- Chọn --</option>
+                                <option value="1" >Hoạt động</option>
+                                <option value="0">Không hoạt động</option>
+                            </select>
                         </div>
                     </div>
                 </form>
@@ -227,11 +189,11 @@
     }
   </script>
   <script>
-      const addStaffForm = document.querySelector("#post_form_register_pro");
-      console.log(addStaffForm.status.value);
+      const addDepartmentForm = document.querySelector("#post_form_register_pro");
+      //console.log(addStaffForm.status.value);
     //   const arrStaff = [];
-        var url = "http://localhost:8080/customer_manager/api/staff/update.php";
-       function editStaff(data){
+        var url = "http://localhost:8080/customer_manager/api/department/create.php";
+       function createDepartment(data){
         var options = {
             method: 'POST',
             header:{
@@ -245,42 +207,16 @@
       console.log(saveBtn);
 
       saveBtn.addEventListener("click", () => {
-        const infoStaff = {
-          id_staff: addStaffForm.id_staff.value,
-          staff_name: addStaffForm.staff_name.value,
-          phone_number: addStaffForm.phone_number.value,
-          status: addStaffForm.status.value,
-          id_department: addStaffForm.id_department.value,
-          card_number: addStaffForm.card_number.value,
-          birth_day: addStaffForm.birth_day.value,
-          staff_address: addStaffForm.staff_address.value,
+        const infoDepartment = {
+          id_department: addDepartmentForm.id_department.value,
+          department_name: addDepartmentForm.department_name.value,
+          department_status: addDepartmentForm.department_status.value,
       }
         //   arrStaff.push(infoStaff)
-          console.log(infoStaff)
-          editStaff(infoStaff);
-          window.location.href = "http://localhost:8080/customer_manager/view/staff/staff.php"
+          //console.log(infoStaff)
+          createDepartment(infoDepartment);
+          window.location.href = "http://localhost:8080/customer_manager/view/department/department.php"
       })
-  </script>
-  <script>
-    //   var url = "http://localhost:8080/customer_manager/api/staff/show.php?id=<?php echo $id?>"
-    //   console.log(url)
-      
-    async function loadDataTable(url, table) {
-        const response = await fetch(url);
-        const data = await response.json();
-        const editStaffForm = document.querySelector("#post_form_register_pro");
-        console.log(data);
-    
-        editStaffForm.id_staff.value = data.id_staff;
-        editStaffForm.staff_name.value = data.staff_name;
-        editStaffForm.phone_number.value = data.phone_number;
-        editStaffForm.status.value = data.status; 
-        editStaffForm.id_department.value = data.id_department; 
-        editStaffForm.card_number.value = data.card_number; 
-        editStaffForm.birth_day.value = data.birdth_day; 
-        editStaffForm.staff_address.value = data.staff_address;    
-    }
-    loadDataTable("http://localhost:8080/customer_manager/api/staff/show.php?id=<?php echo $id?>",document.querySelector(".table") );
   </script>
 </body>
 </html>

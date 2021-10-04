@@ -1,3 +1,4 @@
+<?php $_POST['id'] = "DVH"; ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -7,6 +8,14 @@
     <script src="../../js/staff.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"> 
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../../css/staff.css">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phần mềm quản lý khách hàng Plantinum Cloud</title>
    </head>
@@ -75,7 +84,7 @@
      <li class="profile">
        <a href="view/main/log_out.php">
           <div class="profile-details">
-            <img src="img/profile.jpg" alt="profileImg">
+            <img src="../../img/profile.jpg" alt="profileImg">
             <div class="name_job">
               <div class="name">Huân Kều</div>
               <div class="job">Ad Bạch Kim</div>
@@ -113,7 +122,7 @@
                             </a>
                         </div>
                         <div class="not-published inline" id="published">
-                            <a class="a-not-published a-btn" href="javascript: void(0)">
+                            <a class="a-not-published a-btn" href="../department/department.php">
                                 <img src="../../img/edit.png" alt="pls">
                                 <span class="span-text">Phòng ban</span>
                             </a>
@@ -155,7 +164,7 @@
                         <option value="45">Phòng Ban</option>
                     </select>
                     <div class="search">
-                        <input type="text" name="keyword_nv" id="keyword_nv" class=" job-typeahead" placeholder="Tìm kiếm">
+                        <input type="text" name="keyword_nv" id="keyword_nv" onkeyup="searchStaff()" class=" job-typeahead" placeholder="Tìm kiếm">
                         <a href="javascript:void (0)" id="submitFormKey">
                             <img src="../../img/search.png" alt="search">
                         </a>
@@ -171,6 +180,26 @@
         </div>
     </div>
   </section>
+  <div id="myModal" class="modal fade">
+	<div class="modal-dialog modal-confirm">
+		<div class="modal-content">
+			<div class="modal-header flex-column">
+				<div class="icon-box">
+					<i class="material-icons">&#xE5CD;</i>
+				</div>						
+				<h4 class="modal-title w-100">Bạn có chắc chắn?</h4>	
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>
+			<div class="modal-body">
+				<p>Bạn có thực sự muốn xóa Nhân viên này? Không thể hoàn tác điều này.</p>
+			</div>
+			<div class="modal-footer justify-content-center">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Trở lại</button>
+        
+				<a  class="btn btn-danger delete_staff">Đồng ý</a>
+			</div>
+		</div>
+	</div>
   <script>
     let sidebar = document.querySelector(".sidebar");
     let closeBtn = document.querySelector("#btn");
@@ -194,21 +223,27 @@
     }
     }
   </script>
+ 
   <script>
     async function loadDataTable(url, table) {
     const tableHead = table.querySelector("thead");
     const tableBody = table.querySelector("tbody");
     const response = await fetch(url);
     const data = await response.json();
-    const headers = ["Mã Nhân Viên", "Tên nhân viên" , "Số điện thoại", "Trạng Thái", "Phòng Ban", "Số CMT", "Ngày Sinh", "Địa Chỉ"];
+    const headers = ["Mã Nhân Viên", "Tên nhân viên" , "Số điện thoại", "Trạng Thái", "Phòng Ban", "Số CMT", "Ngày Sinh", "Địa Chỉ", "Tùy Chọn"];
     const rows = [];
-
+    let idStaff = ""
     console.log(data);
     tableHead.innerHTML = "<tr></tr>";
     tableBody.innerHTML = "";
+    
+    
+    data.staff.map((e) => { 
+      const staffDeleteBtn = document.querySelector(".btn.delete_staff");
+      staffDeleteBtn.href = `delete_staff.php?id=${e.id_staff}`;
 
-    data.staff.map((e) => {
-          rows.push([e.id_staff, e.staff_name, e.phone_number,e.status,e.id_department, e.card_number, e.birth_day, e.staff_address])
+          rows.push([e.id_staff, e.staff_name, e.phone_number,e.status,e.id_department, e.card_number, e.birth_day, e.staff_address,`<a class="edit" href="edit_staff.php?id=${e.id_staff}" ><i class='bx bxs-edit' ></i></a> <a class="delete trigger-btn" href="#myModal"  data-toggle="modal" click="reply_click(${e.id_staff})"><i class='bx bxs-trash'></i></a>`])
+
         })
         // console.log(data);
         tableHead.innerHTML = "<tr></tr>";
@@ -224,14 +259,27 @@
             const rowElement = document.createElement("tr")
             for(const cellText of row) {
               const cellElement = document.createElement("td");
-              cellElement.textContent = cellText;
+              cellElement.innerHTML = cellText;
               rowElement.appendChild(cellElement);
             }
             tableBody.appendChild(rowElement);
           }
-          
+          const edit = document.querySelectorAll(".edit")
+          // const delete = document.querySelectorAll(".delete")
+
+            edit.forEach((e) => {
+              e.addEventListener("click", (ele) => {
+               
+               idStaff = ele.path[2].cells[0].textContent
+               console.log(idStaff);
+              })  
+            })
       }
 loadDataTable("http://localhost:8080/customer_manager/api/staff/read.php",document.querySelector(".table") );
+function reply_click(clicked_id)
+  {
+      alert(clicked_id);
+  }
 </script>
 </body>
 </html>

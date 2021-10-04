@@ -43,7 +43,7 @@ if(trim($_SESSION['sess_user_id']) == '') {
        <span class="tooltip">Staff</span>
      </li>
      <li>
-       <a href="#">
+       <a href="view/order/order.php">
          <i class='bx bx-notepad' ></i>
          <span class="links_name">Order</span>
        </a>
@@ -129,7 +129,7 @@ if(trim($_SESSION['sess_user_id']) == '') {
                                 <p class="p-name">Đơn hàng</p>
                             </div>
                         </a>
-                        <a class="item" href="#">
+                        <a class="item" href="view/product/product.php">
                             <div class="item-img">
                                 <img class="img" src="img/img-product.png" alt="">
                                 <img class="img_hover" src="img/img-product-active.png" alt="Đơn hàng">
@@ -138,7 +138,7 @@ if(trim($_SESSION['sess_user_id']) == '') {
                                 <p class="p-name">Sản phẩm</p>
                             </div>
                         </a>
-                        <a class="item" href="#">
+                        <a class="item" href="view/customer/customer.php">
                             <div class="item-img">
                                 <img class="img" src="img/img-customer.png" alt="">
                                 <img class="img_hover" src="img/img-customer-active.png" alt="Đơn hàng">
@@ -147,7 +147,7 @@ if(trim($_SESSION['sess_user_id']) == '') {
                                 <p class="p-name">Khách hàng</p>
                             </div>
                         </a>
-                        <a class="item" href="#">
+                        <a class="item" href="view/indebt/indebt.php">
                             <div class="item-img">
                                 <img class="img" src="img/img-indebt.png" alt="">
                                 <img class="img_hover" src="img/img-indebt-active.png" alt="Đơn hàng">

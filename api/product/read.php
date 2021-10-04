@@ -26,6 +26,7 @@
 
             $question_item = array(
                 'id_product' => $id_product,
+                'product_name' => $product_name,
                 'product_img' => $product_img,
                 'product_group' => $product_group,
                 'product_value' => $product_value,

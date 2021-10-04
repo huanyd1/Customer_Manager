@@ -311,7 +311,6 @@
   display: grid;
 }
 
-
 .staff .content-staff .list-staff .note-dau .code {
   width: 10.5%;
 }
@@ -331,7 +330,7 @@
           align-items: center;
   display: -ms-grid;
   display: grid;
-  width: 7.5%;
+  width: 17.5%;
 }
 
 .staff .content-staff .list-staff .note-dau .phongban {
@@ -361,14 +360,6 @@
   width: 8%;
   border-right: 0px;
 }
-.staff .content-staff .list-staff .note-dau .note {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  display: -ms-grid;
-  display: grid;
-  width: 10%;
-}
 
 .staff .content-staff .list-staff .list {
   display: -webkit-box;
@@ -392,7 +383,6 @@
   font-size: 14px;
   color: #333;
   margin-bottom: 0px;
-  text-align: center;
 }
 
 .staff .content-staff .list-staff .list .stt-list {
@@ -420,9 +410,6 @@
 .staff .content-staff .list-staff .list .name-nv-list a:hover {
   color: #0232a0;
 }
-a{
-  text-decoration: none!important;
-}
 
 .staff .content-staff .list-staff .list .code-list {
   padding-left: 5px;
@@ -443,16 +430,9 @@ a{
 .staff .content-staff .list-staff .list .password-list {
   padding-left: 5px;
   padding-right: 5px;
-  text-align: center;
-  width: 7.5%;
-}
-.staff .content-staff .list-staff .list .node-list {
-  padding-left: 5px;
-  padding-right: 5px;
   text-align: left;
-  width: 10%;
+  width: 17.5%;
 }
-
 
 .staff .content-staff .list-staff .list .phongban-list {
   padding-left: 5px;
@@ -467,7 +447,6 @@ a{
   text-align: left;
   width: 15.5%;
 }
-
 
 .staff .content-staff .list-staff .list .birtday-list {
   width: 8%;

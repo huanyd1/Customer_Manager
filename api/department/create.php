@@ -18,7 +18,7 @@
     $data = json_decode(file_get_contents("php://input"));
     $department->id_department = $data->id_department;
     $department->department_name = $data->department_name;
-    $department->department_status = $data->department_status;
+    $department->status = $data->status;
 
     if($department->create()){
         echo json_encode(array('message','Department Created'));

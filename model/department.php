@@ -34,21 +34,21 @@
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             $this->id_department = $row['id_department'];
             $this->department_name = $row['department_name'];
-            $this->department_status = $row['department_status'];
+            $this->status = $row['status'];
             return $stmt;
         }
 
         public function create(){
-            $query = "INSERT INTO department SET id_department=:id_department, department_name=:department_name, department_status=:department_status ";
+            $query = "INSERT INTO department SET id_department=:id_department, department_name=:department_name, status=:status ";
             $stmt = $this->conn->prepare($query);
             //clean data
             $this->id_department = htmlspecialchars(strip_tags($this->id_department));
             $this->department_name = htmlspecialchars(strip_tags($this->department_name));
-            $this->department_status = htmlspecialchars(strip_tags($this->department_status));            
+            $this->status = htmlspecialchars(strip_tags($this->status));            
 
             $stmt->bindParam(':id_department', $this->id_department);
             $stmt->bindParam(':department_name', $this->department_name);
-            $stmt->bindParam(':department_status', $this->department_status);
+            $stmt->bindParam(':status', $this->status);
 
             if($stmt->execute()){
                 return true;
@@ -58,16 +58,16 @@
         }
 
         public function update(){
-            $query = "UPDATE department SET id_department=:id_department, department_name=:department_name, department_status=:department_status WHERE id_department=:id_department ";
+            $query = "UPDATE department SET id_department=:id_department, department_name=:department_name, status=:status WHERE id_department=:id_department ";
             $stmt = $this->conn->prepare($query);
             //clean data
             $this->id_department = htmlspecialchars(strip_tags($this->id_department));
             $this->department_name = htmlspecialchars(strip_tags($this->department_name));            
-            $this->department_status = htmlspecialchars(strip_tags($this->department_status));            
+            $this->status = htmlspecialchars(strip_tags($this->status));            
 
             $stmt->bindParam(':id_department', $this->id_department);
             $stmt->bindParam(':department_name', $this->department_name);
-            $stmt->bindParam(':department_status', $this->department_status);
+            $stmt->bindParam(':status', $this->status);
 
             if($stmt->execute()){
                 return true;

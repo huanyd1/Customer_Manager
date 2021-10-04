@@ -41,7 +41,7 @@
             $this->staff_name = $row['staff_name'];
             $this->phone_number = $row['phone_number'];
             $this->status = $row['status'];
-            $this->id_staff = $row['id_department'];
+            $this->id_department = $row['id_department'];
             $this->card_number = $row['card_number'];
             $this->birth_day = $row['birth_day'];
             $this->staff_address = $row['staff_address'];

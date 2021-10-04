@@ -27,7 +27,7 @@
             $question_item = array(
                 'id_department' => $id_department,
                 'department_name' => $department_name,
-                'department_status' => $department_status
+                'status' => $status
             );
             #Đẩy mảng
             array_push($question_array['department'], $question_item);
