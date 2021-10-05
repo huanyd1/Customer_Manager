@@ -27,7 +27,7 @@
         <i class='bx bx-menu' id="btn" ></i>
     </div>
     <ul class="nav-list">
-      <li>
+    <li>
           <i class='bx bx-search' ></i>
          <input type="text" placeholder="Search...">
          <span class="tooltip">Search</span>
@@ -40,42 +40,42 @@
          <span class="tooltip">Dashboard</span>
       </li>
       <li>
-       <a href="#">
+       <a href="../staff/staff.php">
          <i class='bx bx-group' ></i>
          <span class="links_name">Staff</span>
        </a>
        <span class="tooltip">Staff</span>
      </li>
      <li>
-       <a href="#">
+       <a href="../order/order.php">
          <i class='bx bx-notepad' ></i>
          <span class="links_name">Order</span>
        </a>
        <span class="tooltip">Order</span>
      </li>
      <li>
-       <a href="#">
+       <a href="../product/product.php">
          <i class='bx bx-box' ></i>
          <span class="links_name">Product</span>
        </a>
        <span class="tooltip">Product</span>
      </li>
      <li>
-       <a href="#">
+       <a href="../customer/customer.php">
          <i class='bx bx-face' ></i>
          <span class="links_name">Customer</span>
        </a>
        <span class="tooltip">Customer</span>
      </li>
      <li>
-       <a href="#">
+       <a href="../indebt/indebt.php">
          <i class='bx bx-money' ></i>
          <span class="links_name">Debts</span>
        </a>
        <span class="tooltip">Debts</span>
      </li>
      <li>
-       <a href="#">
+       <a href="../account/account.php">
         <i class='bx bxs-user-account'></i>
          <span class="links_name">Account</span>
        </a>
@@ -122,12 +122,6 @@
                             </a>
                         </div>
                         <div class="not-published inline" id="published">
-                            <a class="a-not-published a-btn" href="../staff/staff.php">
-                                <img src="../../img/edit.png" alt="pls">
-                                <span class="span-text">Nhân viên</span>
-                            </a>
-                        </div>
-                        <div class="not-published inline" id="published">
                             <a class="a-not-published a-btn" href="javascript: void(0)">
                                 <img src="../../img/pls.png" alt="pls">
                                 <span class="span-text">Kích hoạt</span>
@@ -147,12 +141,6 @@
                             <form class="form-horizontal" name="show_list_user">
                                 <input type="hidden" id="link_export" value="">
                             </form>
-                        </div>
-                        <div class="not-published inline">
-                            <a class="a-not-published a-btn" id="detele" href="javascript:" void(0)"="">
-                            <img src="../../img/detele.png" alt="detele">
-                            <span class="span-text">Xóa</span>
-                            </a>
                         </div>
                     </div>
                 </div>

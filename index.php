@@ -36,7 +36,7 @@ if(trim($_SESSION['sess_user_id']) == '') {
          <span class="tooltip">Dashboard</span>
       </li>
       <li>
-       <a href="#">
+       <a href="view/staff/staff.php">
          <i class='bx bx-group' ></i>
          <span class="links_name">Staff</span>
        </a>
@@ -50,28 +50,28 @@ if(trim($_SESSION['sess_user_id']) == '') {
        <span class="tooltip">Order</span>
      </li>
      <li>
-       <a href="#">
+       <a href="view/product/product.php">
          <i class='bx bx-box' ></i>
          <span class="links_name">Product</span>
        </a>
        <span class="tooltip">Product</span>
      </li>
      <li>
-       <a href="#">
+       <a href="view/customer/customer.php">
          <i class='bx bx-face' ></i>
          <span class="links_name">Customer</span>
        </a>
        <span class="tooltip">Customer</span>
      </li>
      <li>
-       <a href="#">
+       <a href="view/indebt/indebt.php">
          <i class='bx bx-money' ></i>
          <span class="links_name">Debts</span>
        </a>
        <span class="tooltip">Debts</span>
      </li>
      <li>
-       <a href="#">
+       <a href="view/account/account.php">
         <i class='bx bxs-user-account'></i>
          <span class="links_name">Account</span>
        </a>
@@ -114,7 +114,7 @@ if(trim($_SESSION['sess_user_id']) == '') {
                         <a class="item" href="view/staff/staff.php">
                             <div class="item-img">
                                 <img class="img" src="img/img-staff.png" alt="">
-                                <img class="img_hover" src="img/img-staff-active.png" alt="Đơn hàng">
+                                <img class="img_hover" src="img/img-staff-active.png" alt="Nhân viên">
                             </div>
                             <div class="name-img">
                                 <p class="p-name">Nhân viên</p>
@@ -132,7 +132,7 @@ if(trim($_SESSION['sess_user_id']) == '') {
                         <a class="item" href="view/product/product.php">
                             <div class="item-img">
                                 <img class="img" src="img/img-product.png" alt="">
-                                <img class="img_hover" src="img/img-product-active.png" alt="Đơn hàng">
+                                <img class="img_hover" src="img/img-product-active.png" alt="Sản phẩm">
                             </div>
                             <div class="name-img">
                                 <p class="p-name">Sản phẩm</p>
@@ -141,7 +141,7 @@ if(trim($_SESSION['sess_user_id']) == '') {
                         <a class="item" href="view/customer/customer.php">
                             <div class="item-img">
                                 <img class="img" src="img/img-customer.png" alt="">
-                                <img class="img_hover" src="img/img-customer-active.png" alt="Đơn hàng">
+                                <img class="img_hover" src="img/img-customer-active.png" alt="Khách hàng">
                             </div>
                             <div class="name-img">
                                 <p class="p-name">Khách hàng</p>
@@ -150,16 +150,16 @@ if(trim($_SESSION['sess_user_id']) == '') {
                         <a class="item" href="view/indebt/indebt.php">
                             <div class="item-img">
                                 <img class="img" src="img/img-indebt.png" alt="">
-                                <img class="img_hover" src="img/img-indebt-active.png" alt="Đơn hàng">
+                                <img class="img_hover" src="img/img-indebt-active.png" alt="Công nợ">
                             </div>
                             <div class="name-img">
                                 <p class="p-name">Công nợ</p>
                             </div>
                         </a>
-                        <a class="item" href="#">
+                        <a class="item" href="view/account/account.php">
                             <div class="item-img">
                                 <img class="img" src="img/img-account.png" alt="">
-                                <img class="img_hover" src="img/img-account-active.png" alt="Đơn hàng">
+                                <img class="img_hover" src="img/img-account-active.png" alt="Tài khoản">
                             </div>
                             <div class="name-img">
                                 <p class="p-name">Tài khoản</p>

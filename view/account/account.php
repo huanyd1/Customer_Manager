@@ -1,3 +1,6 @@
+<?php
+    $id = 0;
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -104,29 +107,10 @@
     <div class="container">
         <div class="staff">
             <div class="top-staff">
-                <h2>CÔNG NỢ</h2>
+                <h2>THÔNG TIN TÀI KHOẢN</h2>
                 <div class="top-btn-staff">
-
-                    <div class="published inline">
-                        <a class="a-published a-btn" href="javascript: void(0)" id="save_and_new">
-                            <img src="../../img/save_and_news.png" alt="Save and new">
-                            <span class="span-text">Save and new</span>
-                        </a>
-                    </div>
-                    <div class="not-published inline">
-                        <a class="a-not-published a-btn" id="apply_staff" href="javascript: void(0)">
-                            <img src="../../img/apply.png" alt="Apply">
-                            <span class="span-text">Apply</span>
-                        </a>
-                    </div>
-                    <div class="excel inline">
-                        <a class="a-excel a-btn" href="javascript: void(0)" id="save_staff">
-                            <img src="../../img/save.png" alt="Lưu">
-                            <span class="span-text">Lưu</span>
-                        </a>
-                    </div>
                     <div class="detele inline">
-                        <a class="a-detele a-btn" href="../indebt/indebt.php">
+                        <a class="a-detele a-btn" href="../../index.php">
                             <img src="../../img/thoat.png" alt="Thoát">
                             <span class="span-text">Thoát</span>
                         </a>
@@ -134,62 +118,47 @@
                 </div>
             </div>
             <div class="content-staff">
-                <h1><img src="../../img/add.png" alt="add">Thêm mới công nợ</h1>
+                <h1><img src="../../img/add.png" alt="add">Thông tin tài khoản</h1>
                 <form class="post_form clearfix" action="" name="post_form_register_pro" id="post_form_register_pro" method="post" enctype="multipart/form-data">
-                    <div class="form-controls">
-                        <p class="name-input">Mã công nợ:</p>
+                <div class="form-controls">
+                        <p class="name-input">Mã quản trị viên:</p>
                         <div class="input">
-                            <input type="text" name="id_indebt" id="id_indebt" value="">
+                            <input readonly=true type="text" name="id_admin" id="id_admin" value="">
                         </div>
                     </div>
 
                     <div class="form-controls">
-                        <p class="name-input">Mã khách hàng:</p>
+                        <p class="name-input">Tên quản trị viên:</p>
                         <div class="input">
-                            <input type="text" name="id_customer" id="id_customer" value="">
+                            <input type="text" readonly=true name="admin_name" id="admin_name" value="">
                         </div>
                     </div>
 
                     <div class="form-controls">
-                        <p class="name-input">Số điện thoại:</p>
+                        <p class="name-input">Phòng ban:</p>
                         <div class="input">
-                            <input type="text" name="phone_number" id="phone_number" value="">
+                            <input type="text" readonly=true name="admin_department" id="admin_department" value="">
                         </div>
                     </div>
 
                     <div class="form-controls">
-                        <p class="name-input">Tổng giá trị:</p>
+                        <p class="name-input">Chức vụ:</p>
                         <div class="input">
-                            <input type="text" name="total_money" id="total_money" value="">
+                            <input type="text" readonly=true name="position" id="position" value="">
                         </div>
                     </div>
 
                     <div class="form-controls">
-                        <p class="name-input">Hợp đồng:</p>
+                        <p class="name-input">Ngày sinh:</p>
                         <div class="input">
-                            <select name="contract" id="contract">
-                                <option value="">-- Chọn --</option>
-                                <option value="Khách Nợ Plantinum Cloud" >Khách Nợ Plantinum Cloud</option>
-                                <option value="Plantinum Cloud Nợ Khách">Plantinum Cloud Nợ Khách</option>
-                            </select>
+                            <input type="date" readonly=true name="birth_day" id="birth_day" value="">
                         </div>
                     </div>
 
                     <div class="form-controls">
-                        <p class="name-input">Ghi chú:</p>
+                        <p class="name-input">Email:</p>
                         <div class="input">
-                            <input type="text" name="note" id="note" value="">
-                        </div>
-                    </div>
-
-                    <div class="form-controls">
-                        <p class="name-input">Trạng thái:</p>
-                        <div class="input">
-                            <select name="status" id="status">
-                                <option value="">-- Chọn --</option>
-                                <option value="1" >Hoạt động</option>
-                                <option value="0">Không hoạt động</option>
-                            </select>
+                            <input type="text" readonly=true name="admin_email" id="admin_email" value="">
                         </div>
                     </div>
                 </form>
@@ -220,39 +189,21 @@
     }
     }
   </script>
-  <script>
-      const addIndebtForm = document.querySelector("#post_form_register_pro");
-      //console.log(addStaffForm.status.value);
-    //   const arrStaff = [];
-        var url = "http://localhost:8080/customer_manager/api/indebt/create.php";
-       function createIndebt(data){
-        var options = {
-            method: 'POST',
-            header:{
-                'Content-Type' : 'application/json'
-            },
-            body: JSON.stringify(data),
-        };
-        fetch(url, options)
-        }
-      const saveBtn = document.querySelector(".excel.inline");
-      console.log(saveBtn);
-
-      saveBtn.addEventListener("click", () => {
-        const infoIndebt = {
-          id_debt: addIndebtForm.id_indebt.value,
-          id_customer: addIndebtForm.id_customer.value,
-          phone_number: addIndebtForm.phone_number.value,
-          total_money: addIndebtForm.total_money.value,
-          contract: addIndebtForm.contract.value,
-          note: addIndebtForm.note.value,
-          status: addIndebtForm.status.value,
-      }
-        //   arrStaff.push(infoStaff)
-          //console.log(infoStaff)
-          createIndebt(infoIndebt);
-          window.location.href = "http://localhost:8080/customer_manager/view/indebt/indebt.php"
-      })
+  <script> 
+    async function loadDataTable(url, table) {
+        const response = await fetch(url);
+        const data = await response.json();
+        const loadCustomerForm = document.querySelector("#post_form_register_pro");
+        console.log(data);
+    
+        loadCustomerForm.id_admin.value = data.id_admin;
+        loadCustomerForm.admin_name.value = data.admin_name;
+        loadCustomerForm.admin_department.value = data.admin_department;
+        loadCustomerForm.position.value = data.position; 
+        loadCustomerForm.birth_day.value = data.birth_day; 
+        loadCustomerForm.admin_email.value = data.admin_email;   
+    }
+    loadDataTable("http://localhost:8080/customer_manager/api/admin/show.php?id=<?php echo $id?>",document.querySelector(".table") );
   </script>
 </body>
 </html>

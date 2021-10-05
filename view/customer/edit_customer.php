@@ -22,64 +22,64 @@
         <i class='bx bx-menu' id="btn" ></i>
     </div>
     <ul class="nav-list">
-        <li>
+    <li>
             <i class='bx bx-search' ></i>
             <input type="text" placeholder="Search...">
             <span class="tooltip">Search</span>
         </li>
         <li>
-            <a href="#">
+            <a href="../../index.php">
                 <i class='bx bx-grid-alt'></i>
                 <span class="links_name">Dashboard</span>
             </a>
             <span class="tooltip">Dashboard</span>
         </li>
         <li>
-            <a href="#">
+            <a href="../staff/staff.php">
                 <i class='bx bx-group' ></i>
                 <span class="links_name">Staff</span>
             </a>
             <span class="tooltip">Staff</span>
         </li>
         <li>
-            <a href="#">
+            <a href="../order/order.php">
                 <i class='bx bx-notepad' ></i>
                 <span class="links_name">Order</span>
             </a>
             <span class="tooltip">Order</span>
         </li>
         <li>
-            <a href="#">
+            <a href="../product/product.php">
                 <i class='bx bx-box' ></i>
                 <span class="links_name">Product</span>
             </a>
             <span class="tooltip">Product</span>
         </li>
         <li>
-            <a href="#">
+            <a href="../customer/customer.php">
                 <i class='bx bx-face' ></i>
                 <span class="links_name">Customer</span>
             </a>
             <span class="tooltip">Customer</span>
         </li>
         <li>
-            <a href="#">
+            <a href="../indebt/indebt.php">
                 <i class='bx bx-money' ></i>
                 <span class="links_name">Debts</span>
             </a>
             <span class="tooltip">Debts</span>
         </li>
         <li>
-            <a href="#">
+            <a href="../account/account.php">
                 <i class='bx bxs-user-account'></i>
                 <span class="links_name">Account</span>
             </a>
             <span class="tooltip">Account</span>
         </li>
         <li class="profile">
-            <a href="view/main/log_out.php">
+            <a href="../../view/main/log_out.php">
                 <div class="profile-details">
-                    <img src="img/profile.jpg" alt="profileImg">
+                    <img src="../../img/profile.jpg" alt="profileImg">
                     <div class="name_job">
                         <div class="name">Huân Kều</div>
                         <div class="job">Ad Bạch Kim</div>
@@ -129,7 +129,7 @@
                         </a>
                     </div>
                     <div class="detele inline">
-                        <a class="a-detele a-btn" href="">
+                        <a class="a-detele a-btn" href="../customer/customer.php">
                             <img src="../../img/thoat.png" alt="Thoát">
                             <span class="span-text">Thoát</span>
                         </a>

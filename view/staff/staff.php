@@ -27,7 +27,7 @@
         <i class='bx bx-menu' id="btn" ></i>
     </div>
     <ul class="nav-list">
-      <li>
+    <li>
           <i class='bx bx-search' ></i>
          <input type="text" placeholder="Search...">
          <span class="tooltip">Search</span>
@@ -40,42 +40,42 @@
          <span class="tooltip">Dashboard</span>
       </li>
       <li>
-       <a href="#">
+       <a href="../staff/staff.php">
          <i class='bx bx-group' ></i>
          <span class="links_name">Staff</span>
        </a>
        <span class="tooltip">Staff</span>
      </li>
      <li>
-       <a href="#">
+       <a href="../order/order.php">
          <i class='bx bx-notepad' ></i>
          <span class="links_name">Order</span>
        </a>
        <span class="tooltip">Order</span>
      </li>
      <li>
-       <a href="#">
+       <a href="../product/product.php">
          <i class='bx bx-box' ></i>
          <span class="links_name">Product</span>
        </a>
        <span class="tooltip">Product</span>
      </li>
      <li>
-       <a href="#">
+       <a href="../customer/customer.php">
          <i class='bx bx-face' ></i>
          <span class="links_name">Customer</span>
        </a>
        <span class="tooltip">Customer</span>
      </li>
      <li>
-       <a href="#">
+       <a href="../indebt/indebt.php">
          <i class='bx bx-money' ></i>
          <span class="links_name">Debts</span>
        </a>
        <span class="tooltip">Debts</span>
      </li>
      <li>
-       <a href="#">
+       <a href="../account/account.php">
         <i class='bx bxs-user-account'></i>
          <span class="links_name">Account</span>
        </a>
@@ -122,12 +122,6 @@
                             </a>
                         </div>
                         <div class="not-published inline" id="published">
-                            <a class="a-not-published a-btn" href="../department/department.php">
-                                <img src="../../img/edit.png" alt="pls">
-                                <span class="span-text">Phòng ban</span>
-                            </a>
-                        </div>
-                        <div class="not-published inline" id="published">
                             <a class="a-not-published a-btn" href="javascript: void(0)">
                                 <img src="../../img/pls.png" alt="pls">
                                 <span class="span-text">Kích hoạt</span>
@@ -143,15 +137,6 @@
                             <a class="a-not-published a-btn" href="javascript:void(0)">
                                 <img src="../../img/excel.png" alt="excel">
                                 <span class="span-text">Excel</span>
-                            </a>
-                            <form class="form-horizontal" name="show_list_user">
-                                <input type="hidden" id="link_export" value="https://khachhang.bachkim.com.vn/index.php?module=debt&amp;view=home&amp;task=export_video&amp;raw=1">
-                            </form>
-                        </div>
-                        <div class="not-published inline">
-                            <a class="a-not-published a-btn" id="detele" href="javascript:" void(0)"="">
-                            <img src="../../img/detele.png" alt="detele">
-                            <span class="span-text">Xóa</span>
                             </a>
                         </div>
                     </div>
@@ -196,7 +181,7 @@
 			<div class="modal-footer justify-content-center">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Trở lại</button>
         
-				<a  class="btn btn-danger delete_staff">Đồng ý</a>
+				<a  class="btn btn-danger" id="delete_staff">Đồng ý</a>
 			</div>
 		</div>
 	</div>
@@ -239,8 +224,7 @@
     
     
     data.staff.map((e) => { 
-      const staffDeleteBtn = document.querySelector(".btn.delete_staff");
-      staffDeleteBtn.href = `delete_staff.php?id=${e.id_staff}`;
+     
 
           rows.push([e.id_staff, e.staff_name, e.phone_number,e.status,e.id_department, e.card_number, e.birth_day, e.staff_address,`<a class="edit" href="edit_staff.php?id=${e.id_staff}" ><i class='bx bxs-edit' ></i></a> <a class="delete trigger-btn" href="#myModal"  data-toggle="modal" click="reply_click(${e.id_staff})"><i class='bx bxs-trash'></i></a>`])
 
@@ -264,16 +248,27 @@
             }
             tableBody.appendChild(rowElement);
           }
-          const edit = document.querySelectorAll(".edit")
-          // const delete = document.querySelectorAll(".delete")
+          const btn_del = document.querySelectorAll(".delete")
 
-            edit.forEach((e) => {
-              e.addEventListener("click", (ele) => {
-               
-               idStaff = ele.path[2].cells[0].textContent
-               console.log(idStaff);
-              })  
-            })
+      
+      btn_del.forEach((e) => {
+        e.addEventListener("click", (ele) => {
+          document.querySelector("#delete_staff").href = `delete_staff.php?id=${ele.path[3].cells[0].textContent}`;
+          console.log(ele.path[3].cells[0].textContent);
+        })  
+      })
+
+      const list = document.querySelectorAll("tbody tr")
+      list.forEach(e => {
+        // console.log(e.childNodes[3]);
+        if(e.childNodes[3].textContent == 1 ) {
+          e.childNodes[3].innerHTML = `<img src="../../img/published.png"/>`
+        } else {
+          e.childNodes[3].innerHTML = `<img src="../../img/unpublished.png"/>`
+        }
+        
+      })
+
       }
 loadDataTable("http://localhost:8080/customer_manager/api/staff/read.php",document.querySelector(".table") );
 function reply_click(clicked_id)
