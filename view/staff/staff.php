@@ -260,13 +260,11 @@
 
       const list = document.querySelectorAll("tbody tr")
       list.forEach(e => {
-        // console.log(e.childNodes[3]);
         if(e.childNodes[3].textContent == 1 ) {
           e.childNodes[3].innerHTML = `<img src="../../img/published.png"/>`
         } else {
           e.childNodes[3].innerHTML = `<img src="../../img/unpublished.png"/>`
         }
-        
       })
 
       }

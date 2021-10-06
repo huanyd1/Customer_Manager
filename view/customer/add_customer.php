@@ -263,7 +263,7 @@
         //   arrStaff.push(infoStaff)
           //console.log(infoStaff)
           createCustomer(infoCustomer);
-          //window.location.href = "http://localhost:8080/customer_manager/view/customer/customer.php"
+          window.location.href = "http://localhost:8080/customer_manager/view/customer/customer.php"
       })
   </script>
 </body>

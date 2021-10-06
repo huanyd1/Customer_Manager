@@ -14,7 +14,7 @@
         fetch(url, options)
         }
         const infoIndebt = {
-          id_indebt: "<?php echo $id?>"
+          id_debt: "<?php echo $id?>"
         }
         //console.log(infoStaff)
         deleteIndebt(infoIndebt);

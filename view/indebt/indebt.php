@@ -179,12 +179,12 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 			</div>
 			<div class="modal-body">
-				<p>Bạn có thực sự muốn xóa Nhân viên này? Không thể hoàn tác điều này.</p>
+				<p>Bạn có thực sự muốn xóa Công nợ này? Không thể hoàn tác điều này.</p>
 			</div>
 			<div class="modal-footer justify-content-center">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Trở lại</button>
         
-				<a  class="btn btn-danger delete_staff">Đồng ý</a>
+				<a  class="btn btn-danger" id="delete_indebt">Đồng ý</a>
 			</div>
 		</div>
 	</div>
@@ -227,8 +227,6 @@
     
     
     data.indebt.map((e) => { 
-      const staffDeleteBtn = document.querySelector(".btn.delete_staff");
-      staffDeleteBtn.href = `delete_staff.php?id=${e.id_staff}`;
 
           rows.push([e.id_debt, e.id_customer, e.phone_number, e.total_money, e.contract, e.note, e.status,`<a class="edit" href="edit_indebt.php?id=${e.id_debt}" ><i class='bx bxs-edit' ></i></a> <a class="delete trigger-btn" href="#myModal"  data-toggle="modal" click="reply_click(${e.id_staff})"><i class='bx bxs-trash'></i></a>`])
 
@@ -252,16 +250,25 @@
             }
             tableBody.appendChild(rowElement);
           }
-          const edit = document.querySelectorAll(".edit")
-          // const delete = document.querySelectorAll(".delete")
 
-            edit.forEach((e) => {
-              e.addEventListener("click", (ele) => {
-               
-               idStaff = ele.path[2].cells[0].textContent
-               console.log(idStaff);
-              })  
-            })
+          const btn_del = document.querySelectorAll(".delete")
+
+      
+          btn_del.forEach((e) => {
+            e.addEventListener("click", (ele) => {
+              document.querySelector("#delete_indebt").href = `delete_indebt.php?id=${ele.path[3].cells[0].textContent}`;
+              console.log(ele.path[3].cells[0].textContent);
+            })  
+          })
+
+          const list = document.querySelectorAll("tbody tr")
+          list.forEach(e => {
+            if(e.childNodes[6].textContent == 1 ) {
+              e.childNodes[6].innerHTML = `<img src="../../img/published.png"/>`
+            } else {
+              e.childNodes[6].innerHTML = `<img src="../../img/unpublished.png"/>`
+            }
+          })
       }
 loadDataTable("http://localhost:8080/customer_manager/api/indebt/read.php",document.querySelector(".table") );
 function reply_click(clicked_id)

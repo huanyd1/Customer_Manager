@@ -174,7 +174,8 @@
                     <div class="form-controls">
                         <p class="name-input">Phòng ban:</p>
                         <div class="input">
-                            <input type="text" name="id_department" id="id_department" value="">
+                            <select name="id_department" id="id_department">
+                            </select>                        
                         </div>
                     </div>
 
@@ -258,7 +259,7 @@
         //   arrStaff.push(infoStaff)
           console.log(infoStaff)
           editStaff(infoStaff);
-          window.location.href = "http://localhost:8080/customer_manager/view/staff/staff.php"
+          //window.location.href = "http://localhost:8080/customer_manager/view/staff/staff.php"
       })
   </script>
   <script>
@@ -275,12 +276,25 @@
         editStaffForm.staff_name.value = data.staff_name;
         editStaffForm.phone_number.value = data.phone_number;
         editStaffForm.status.value = data.status; 
-        editStaffForm.id_department.value = data.id_department; 
+        editStaffForm.id_department.option = data.id_department; 
         editStaffForm.card_number.value = data.card_number; 
         editStaffForm.birth_day.value = data.birdth_day; 
         editStaffForm.staff_address.value = data.staff_address;    
     }
     loadDataTable("http://localhost:8080/customer_manager/api/staff/show.php?id=<?php echo $id?>",document.querySelector(".table") );
+    async function loadDataTable1(url, table) {
+    const response = await fetch(url);
+    const data = await response.json();
+    const selectDepartment = table.id_department
+    data.department.map((e) => {
+        const opt = document.createElement("option");
+        opt.value = e.id_department
+        opt.innerHTML = e.department_name
+        selectDepartment.appendChild(opt) 
+    })
+  
+      }
+loadDataTable1("http://localhost:8080/customer_manager/api/department/read.php",document.querySelector("#post_form_register_pro") );
   </script>
 </body>
 </html>

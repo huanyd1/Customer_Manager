@@ -253,8 +253,6 @@
           birth_day: addStaffForm.birth_day.value,
           staff_address: addStaffForm.staff_address.value,
       }
-        //   arrStaff.push(infoStaff)
-          //console.log(infoStaff)
           createStaff(infoStaff);
           window.location.href = "http://localhost:8080/customer_manager/view/staff/staff.php"
       })
@@ -267,7 +265,7 @@ async function loadDataTable(url, table) {
     const selectDepartment = table.id_department
     data.department.map((e) => {
         const opt = document.createElement("option");
-        opt.value = e.department_name
+        opt.value = e.id_department
         opt.innerHTML = e.department_name
         selectDepartment.appendChild(opt) 
     })

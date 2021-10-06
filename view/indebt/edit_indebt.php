@@ -147,10 +147,11 @@
                     </div>
 
                     <div class="form-controls">
-                        <p class="name-input">Mã khách hàng:</p>
+                        <p class="name-input">Khách hàng:</p>
                         <div class="input">
-                            <input type="text" name="id_customer" id="id_customer" value="">
-                        </div>
+                        <select name="id_customer" id="id_customer">
+                        </select>                          
+                    </div>
                     </div>
 
                     <div class="form-controls">
@@ -273,6 +274,19 @@
         editIndebtForm.status.value = data.status; 
     }
     loadDataTable("http://localhost:8080/customer_manager/api/indebt/show.php?id=<?php echo $id?>",document.querySelector(".table") );
+    async function loadSelectTable(url, table) {
+        const response = await fetch(url);
+        const data = await response.json();
+        const selectCustomer = table.id_customer
+        data.customer.map((e) => {
+        const opt = document.createElement("option");
+        opt.value = e.id_customer
+        opt.innerHTML = e.customer_name
+        selectCustomer.appendChild(opt) 
+    })
+  
+      }
+loadSelectTable("http://localhost:8080/customer_manager/api/customer/read.php",document.querySelector("#post_form_register_pro") );
   </script>
 </body>
 </html>

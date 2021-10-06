@@ -179,12 +179,12 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 			</div>
 			<div class="modal-body">
-				<p>Bạn có thực sự muốn xóa Nhân viên này? Không thể hoàn tác điều này.</p>
+				<p>Bạn có thực sự muốn xóa Sản phẩm này? Không thể hoàn tác điều này.</p>
 			</div>
 			<div class="modal-footer justify-content-center">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Trở lại</button>
         
-				<a  class="btn btn-danger delete_staff">Đồng ý</a>
+				<a  class="btn btn-danger" id="delete_product">Đồng ý</a>
 			</div>
 		</div>
 	</div>
@@ -227,8 +227,6 @@
     
     
     data.product.map((e) => { 
-      const staffDeleteBtn = document.querySelector(".btn.delete_staff");
-      staffDeleteBtn.href = `delete_staff.php?id=${e.id_staff}`;
 
           rows.push([e.id_product, e.product_name, e.product_img, e.product_group, e.product_value, e.product_total, e.product_sold, e.product_inventory, e.status, `<a class="edit" href="edit_product.php?id=${e.id_product}" ><i class='bx bxs-edit' ></i></a> <a class="delete trigger-btn" href="#myModal"  data-toggle="modal" click="reply_click(${e.id_staff})"><i class='bx bxs-trash'></i></a>`])
 
@@ -252,6 +250,25 @@
             }
             tableBody.appendChild(rowElement);
           }
+
+          const btn_del = document.querySelectorAll(".delete")
+
+          btn_del.forEach((e) => {
+            e.addEventListener("click", (ele) => {
+              document.querySelector("#delete_product").href = `delete_product.php?id=${ele.path[3].cells[0].textContent}`;
+              console.log(ele.path[3].cells[0].textContent);
+            })  
+          })
+
+          const list = document.querySelectorAll("tbody tr")
+        list.forEach(e => {
+          if(e.childNodes[8].textContent == 1 ) {
+            e.childNodes[8].innerHTML = `<img src="../../img/published.png"/>`
+          } else {
+            e.childNodes[8].innerHTML = `<img src="../../img/unpublished.png"/>`
+          }
+        })
+
           const edit = document.querySelectorAll(".edit")
           // const delete = document.querySelectorAll(".delete")
 
@@ -271,3 +288,8 @@ function reply_click(clicked_id)
 </script>
 </body>
 </html>
+<style>
+  th{
+    text-align: center!important;
+  }
+</style>

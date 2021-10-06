@@ -163,14 +163,16 @@
                     <div class="form-controls">
                         <p class="name-input">Khách hàng:</p>
                         <div class="input">
-                            <input type="text" name="id_customer" id="id_customer" value="">
+                        <select name="id_customer" id="id_customer">
+                            </select>                          
                         </div>
                     </div>
 
                     <div class="form-controls">
                         <p class="name-input">Sản phẩm:</p>
                         <div class="input">
-                            <input type="text" name="id_product" id="id_product" value="">
+                        <select name="id_product" id="id_product">
+                            </select>                          
                         </div>
                     </div>
 
@@ -184,7 +186,8 @@
                     <div class="form-controls">
                         <p class="name-input">Nhân viên thực hiện:</p>
                         <div class="input">
-                            <input type="text" name="id_staff" id="id_staff" value="">
+                        <select name="id_staff" id="id_staff">
+                            </select>                            
                         </div>
                     </div>
 
@@ -278,6 +281,47 @@
         editOrderForm.status.value = data.status;    
     }
     loadDataTable("http://localhost:8080/customer_manager/api/order/show.php?id=<?php echo $id?>",document.querySelector(".table") );
+    async function loadDataTable4(url, table) {
+    const response = await fetch(url);
+    const data = await response.json();
+    const selectCustomer = table.id_customer
+    data.customer.map((e) => {
+        const opt = document.createElement("option");
+        opt.value = e.id_customer
+        opt.innerHTML = e.customer_name
+        selectCustomer.appendChild(opt) 
+    })
+  
+      }
+loadDataTable4("http://localhost:8080/customer_manager/api/customer/read.php",document.querySelector("#post_form_register_pro") );
+
+async function loadDataTable2(url, table) {
+    const response = await fetch(url);
+    const data = await response.json();
+    const selectProduct = table.id_product
+    data.product.map((e) => {
+        const opt = document.createElement("option");
+        opt.value = e.id_product
+        opt.innerHTML = e.product_name
+        selectProduct.appendChild(opt) 
+    })
+  
+      }
+loadDataTable2("http://localhost:8080/customer_manager/api/product/read.php",document.querySelector("#post_form_register_pro") );
+
+async function loadDataTable3(url, table) {
+    const response = await fetch(url);
+    const data = await response.json();
+    const selectStaff = table.id_staff
+    data.staff.map((e) => {
+        const opt = document.createElement("option");
+        opt.value = e.id_staff
+        opt.innerHTML = e.staff_name
+        selectStaff.appendChild(opt) 
+    })
+  
+      }
+loadDataTable3("http://localhost:8080/customer_manager/api/staff/read.php",document.querySelector("#post_form_register_pro") );
   </script>
 </body>
 </html>

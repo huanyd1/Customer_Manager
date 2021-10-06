@@ -1,6 +1,5 @@
 <?php
     $id = $_GET['id'];
-    echo $id;
 ?>
 <script>
     var url = "http://localhost:8080/customer_manager/api/staff/delete.php";
@@ -19,6 +18,6 @@
         }
         console.log(infoStaff)
         deleteStaff(infoStaff);
-        //window.location.href = "http://localhost:8080/customer_manager/view/staff/staff.php"
+        window.location.href = "http://localhost:8080/customer_manager/view/staff/staff.php"
       
 </script>

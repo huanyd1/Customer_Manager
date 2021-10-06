@@ -498,6 +498,10 @@
   background: #F8F8F8;
 }
 
+td {
+  text-align: center;
+}
+
 @media (max-width: 767px) {
   .staff .top-staff {
     display: block;

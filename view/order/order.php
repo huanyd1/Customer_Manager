@@ -179,12 +179,12 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 			</div>
 			<div class="modal-body">
-				<p>Bạn có thực sự muốn xóa Nhân viên này? Không thể hoàn tác điều này.</p>
+				<p>Bạn có thực sự muốn xóa Đơn hàng này? Không thể hoàn tác điều này.</p>
 			</div>
 			<div class="modal-footer justify-content-center">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Trở lại</button>
         
-				<a  class="btn btn-danger delete_staff">Đồng ý</a>
+				<a  class="btn btn-danger" id="delete_order">Đồng ý</a>
 			</div>
 		</div>
 	</div>
@@ -227,8 +227,6 @@
     
     
     data.order.map((e) => { 
-      const staffDeleteBtn = document.querySelector(".btn.delete_staff");
-      staffDeleteBtn.href = `delete_staff.php?id=${e.id_staff}`;
 
           rows.push([e.id_order, e.number_order, e.date_order, e.id_customer, e.id_product, e.order_value, e.id_staff, e.status,`<a class="edit" href="edit_order.php?id=${e.id_order}" ><i class='bx bxs-edit' ></i></a> <a class="delete trigger-btn" href="#myModal"  data-toggle="modal" click="reply_click(${e.id_staff})"><i class='bx bxs-trash'></i></a>`])
 
@@ -252,16 +250,26 @@
             }
             tableBody.appendChild(rowElement);
           }
-          const edit = document.querySelectorAll(".edit")
-          // const delete = document.querySelectorAll(".delete")
+          const btn_del = document.querySelectorAll(".delete")
 
-            edit.forEach((e) => {
-              e.addEventListener("click", (ele) => {
-               
-               idStaff = ele.path[2].cells[0].textContent
-               console.log(idStaff);
-              })  
-            })
+      
+      btn_del.forEach((e) => {
+        e.addEventListener("click", (ele) => {
+          document.querySelector("#delete_order").href = `delete_order.php?id=${ele.path[3].cells[0].textContent}`;
+          console.log(ele.path[3].cells[0].textContent);
+        })  
+      })
+
+      const list = document.querySelectorAll("tbody tr")
+      list.forEach(e => {
+        // console.log(e.childNodes[3]);
+        if(e.childNodes[7].textContent == 1 ) {
+          e.childNodes[7].innerHTML = `<img src="../../img/published.png"/>`
+        } else {
+          e.childNodes[7].innerHTML = `<img src="../../img/unpublished.png"/>`
+        }
+        
+      })
       }
 loadDataTable("http://localhost:8080/customer_manager/api/order/read.php",document.querySelector(".table") );
 
