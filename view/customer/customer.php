@@ -18,6 +18,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phần mềm quản lý khách hàng Plantinum Cloud</title>
+    <link rel="icon" href="../../img/platinum-cloud.ico">
    </head>
 <body>
   <div class="sidebar">
@@ -226,8 +227,9 @@
     
     
     data.customer.map((e) => { 
+      console.log(e.customer_img);
 
-          rows.push([e.id_customer, e.customer_name, e.customer_img, e.customer_address, e.total_order_value, e.contract, e.phone_number, e.customer_email, e.status, `<a class="edit" href="edit_customer.php?id=${e.id_customer}" ><i class='bx bxs-edit' ></i></a> <a class="delete trigger-btn" href="#myModal"  data-toggle="modal" click="reply_click(${e.id_staff})"><i class='bx bxs-trash'></i></a>`])
+          rows.push([e.id_customer, e.customer_name, `<img width='100' height='120' src=../../img/customer-img/${e.customer_img} />`, e.customer_address, e.total_order_value, e.contract, e.phone_number, e.customer_email, e.status==1 ? `<img src="../../img/published.png"/>`: `<img src="../../img/unpublished.png"/>`, `<a class="edit" href="edit_customer.php?id=${e.id_customer}" ><i class='bx bxs-edit' ></i></a> <a class="delete trigger-btn" href="#myModal"  data-toggle="modal" click="reply_click(${e.id_staff})"><i class='bx bxs-trash'></i></a>`])
 
         })
         // console.log(data);
@@ -260,14 +262,14 @@
             })  
           })
 
-          const list = document.querySelectorAll("tbody tr")
-          list.forEach(e => {
-            if(e.childNodes[8].textContent == 1 ) {
-              e.childNodes[8].innerHTML = `<img src="../../img/published.png"/>`
-            } else {
-              e.childNodes[8].innerHTML = `<img src="../../img/unpublished.png"/>`
-            }
-          })
+          // const list = document.querySelectorAll("tbody tr")
+          // list.forEach(e => {
+          //   if(e.childNodes[8].textContent == 1 ) {
+          //     e.childNodes[8].innerHTML = `<img src="../../img/published.png"/>`
+          //   } else {
+          //     e.childNodes[8].innerHTML = `<img src="../../img/unpublished.png"/>`
+          //   }
+          // })
           // list.forEach(e => {
           // e.childNodes[2].innerHTML = `<img src="../../img/customer-img/"/>`
           // })

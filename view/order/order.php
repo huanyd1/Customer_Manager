@@ -18,6 +18,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phần mềm quản lý khách hàng Plantinum Cloud</title>
+    <link rel="icon" href="../../img/platinum-cloud.ico">
    </head>
 <body>
   <div class="sidebar">

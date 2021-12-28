@@ -18,6 +18,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phần mềm quản lý khách hàng Plantinum Cloud</title>
+    <link rel="icon" href="../../img/platinum-cloud.ico">
    </head>
 <body>
   <div class="sidebar">
@@ -228,7 +229,7 @@
     
     data.product.map((e) => { 
 
-          rows.push([e.id_product, e.product_name, e.product_img, e.product_group, e.product_value, e.product_total, e.product_sold, e.product_inventory, e.status, `<a class="edit" href="edit_product.php?id=${e.id_product}" ><i class='bx bxs-edit' ></i></a> <a class="delete trigger-btn" href="#myModal"  data-toggle="modal" click="reply_click(${e.id_staff})"><i class='bx bxs-trash'></i></a>`])
+          rows.push([e.id_product, e.product_name, `<img width='100' height='100' src=../../img/product-img/${e.product_img} />`, e.product_group, e.product_value, e.product_total, e.product_sold, e.product_inventory, e.status, `<a class="edit" href="edit_product.php?id=${e.id_product}" ><i class='bx bxs-edit' ></i></a> <a class="delete trigger-btn" href="#myModal"  data-toggle="modal" click="reply_click(${e.id_staff})"><i class='bx bxs-trash'></i></a>`])
 
         })
         // console.log(data);

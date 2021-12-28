@@ -1,6 +1,9 @@
 body {
 	font-family: 'Varela Round', sans-serif;
 }
+table thead tr th {
+	text-align: center !important;
+  }
 .modal-confirm {		
 	color: #636363;
 	width: 400px;

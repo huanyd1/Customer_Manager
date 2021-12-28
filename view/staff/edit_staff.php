@@ -8,7 +8,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Phần mềm quản lý khách hàng Plantinum Cloud</title>
+    <link rel="icon" href="../../img/platinum-cloud.ico">
     <link rel="stylesheet" href="../../css/index.css">
     <link rel="stylesheet" href="../../css/add.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
@@ -265,23 +266,6 @@
   <script>
     //   var url = "http://localhost:8080/customer_manager/api/staff/show.php?id=<?php echo $id?>"
     //   console.log(url)
-      
-    async function loadDataTable(url, table) {
-        const response = await fetch(url);
-        const data = await response.json();
-        const editStaffForm = document.querySelector("#post_form_register_pro");
-        console.log(data);
-    
-        editStaffForm.id_staff.value = data.id_staff;
-        editStaffForm.staff_name.value = data.staff_name;
-        editStaffForm.phone_number.value = data.phone_number;
-        editStaffForm.status.value = data.status; 
-        editStaffForm.id_department.option = data.id_department; 
-        editStaffForm.card_number.value = data.card_number; 
-        editStaffForm.birth_day.value = data.birdth_day; 
-        editStaffForm.staff_address.value = data.staff_address;    
-    }
-    loadDataTable("http://localhost:8080/customer_manager/api/staff/show.php?id=<?php echo $id?>",document.querySelector(".table") );
     async function loadDataTable1(url, table) {
     const response = await fetch(url);
     const data = await response.json();
@@ -292,9 +276,32 @@
         opt.innerHTML = e.department_name
         selectDepartment.appendChild(opt) 
     })
-  
+    // console.log(data);
+ 
       }
 loadDataTable1("http://localhost:8080/customer_manager/api/department/read.php",document.querySelector("#post_form_register_pro") );
+      
+    async function loadDataTable(url, table) {
+        const response = await fetch(url);
+        const data = await response.json();
+        const editStaffForm = document.querySelector("#post_form_register_pro");
+        // console.log(data);
+    
+        editStaffForm.id_staff.value = data.id_staff;
+        editStaffForm.staff_name.value = data.staff_name;
+        editStaffForm.phone_number.value = data.phone_number;
+        editStaffForm.status.value = data.status; 
+        editStaffForm.id_department.option = data.id_department; 
+        editStaffForm.card_number.value = data.card_number; 
+        editStaffForm.birth_day.value = data.birdth_day; 
+        editStaffForm.staff_address.value = data.staff_address;    
+
+        //console.log(document.querySelector("#id_department").value);
+        document.querySelector("#id_department").value = data.id_department
+    }
+    loadDataTable("http://localhost:8080/customer_manager/api/staff/show.php?id=<?php echo $id?>",document.querySelector(".table") );
+   
   </script>
+  
 </body>
 </html>

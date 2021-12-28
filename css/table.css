@@ -1,3 +1,11 @@
+.table th, .table td {
+  text-align: center !important;
+}
+
+.table thead th {
+  text-align: center !important;
+}
+
 .staff {
   margin-bottom: 50px;
 }
@@ -498,7 +506,7 @@
   background: #F8F8F8;
 }
 
-td {
+th {
   text-align: center;
 }
 

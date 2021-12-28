@@ -18,6 +18,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phần mềm quản lý khách hàng Plantinum Cloud</title>
+    <link rel="icon" href="../../img/platinum-cloud.ico">
    </head>
 <body>
   <div class="sidebar">
@@ -119,6 +120,12 @@
                             <a class="a-not-published a-btn" href="add_staff.php">
                                 <img src="../../img/add.png" alt="pls">
                                 <span class="span-text">Thêm mới</span>
+                            </a>
+                        </div>
+                        <div class="not-published inline" id="published">
+                            <a class="a-not-published a-btn" href="../department/department.php">
+                                <img src="../../img/edit.png" alt="pls">
+                                <span class="span-text">Phòng ban</span>
                             </a>
                         </div>
                         <div class="not-published inline" id="published">

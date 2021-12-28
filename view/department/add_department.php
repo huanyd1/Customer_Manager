@@ -5,7 +5,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Phần mềm quản lý khách hàng Plantinum Cloud</title>
+    <link rel="icon" href="../../img/platinum-cloud.ico">
     <link rel="stylesheet" href="../../css/index.css">
     <link rel="stylesheet" href="../../css/add.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
@@ -154,7 +155,7 @@
                         <p class="name-input">Trạng thái:</p>
                         <div class="input">
                             <select name="department_status" id="department_status">
-                                <option value="">-- Chọn --</option>
+                                <option value="1">-- Chọn --</option>
                                 <option value="1" >Hoạt động</option>
                                 <option value="0">Không hoạt động</option>
                             </select>
